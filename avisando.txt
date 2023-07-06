@@ -1,0 +1,38 @@
+Todos foram feito na primeira parte
+
+
+CadastroCliente.html e CadastroCliente.php
+cadastroUsuario.php
+index.php
+indexsenha.html
+indexsenhaconf.html
+logado.php
+new.css
+PIT.sql
+script.js
+
+IGNORAR PARTE ABAIXO
+
+	Diretório	img	   <dir>
+ 	Diretório	README	   <dir>
+ 	Arquivo	cadastroCliente.html	   01/06/23 - 16:36 [2 KB]
+ 	Arquivo	cadastroCliente.php	   01/06/23 - 16:36 [4 KB]
+ 	Arquivo	cadastroUsuario.php	   01/06/23 - 16:36 [5 KB]
+ 	Arquivo	index.php	   01/06/23 - 16:36 [2 KB]
+ 	Arquivo	indexsenha.html	   01/06/23 - 16:36 [1 KB]
+ 	Arquivo	indexsenhaconf.html	   01/06/23 - 16:36 [1 KB]
+ 	Arquivo	Logado.php	   01/06/23 - 16:36 [2 KB]
+ 	Arquivo	new.css	   01/06/23 - 16:36 [6 KB]
+ 	Arquivo	PIT.sql	   01/06/23 - 16:36 [1 KB]
+ 	Arquivo	README.md	   01/06/23 - 16:36 [0 KB]
+ 	Arquivo	README.txt	   01/06/23 - 16:36 [0 KB]
+ 	Arquivo	README.txt.bak	   01/06/23 - 16:36 [0 KB]
+ 	Arquivo	replit.nix	   01/06/23 - 16:36 [0 KB]
+ 	Arquivo	script.js
+
+IGNORAR PARTE ACIMA
+
+  
+
+
+Segunda parte foi feito:

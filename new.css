@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;1,200;1,400;1,500;1,600&display=swap');
+
+
+
+
+body {
+  font-family: 'Poppins';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+
+.LoginContainer {
+  display: flex;
+  width: 500px;
+  height: 500px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+}
+
+.LoginContainer2 {
+  display: flex;
+  width: 762px;
+  height: 700px;
+  gap: 0 20px;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.LoginContainer2 p {
+  text-align: center;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 72px;
+  color: #292929;
+}
+
+.LoginContainer p {
+  text-align: center;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 72px;
+  color: #292929;
+}
+
+.LoginContainer3 {
+  display: flex;
+  width: 762px;
+  height: 900px;
+  gap: 0 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.LoginContainer3 p {
+  text-align: center;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 72px;
+  color: #292929;
+}
+
+.LoginContainer4 {
+  display: flex;
+  width: 500px;
+  height: 500px;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+.LoginContainer4 p {
+  text-align: center;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 72px;
+  color: #292929;
+}
+
+.line {
+  width: 63.01px;
+  height: 0px;
+  border: 5px solid #29ADDF;
+}
+
+.InputBlock {
+  display: flex;
+  width: 683px;
+  height: 300px;
+  justify-content: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 0 20px;
+  align-content: center;
+
+}
+
+.InputBlock input {
+  border: none;
+  border-bottom: 1px solid #828282;
+  outline: none;
+  background-color: transparent;
+  color: #828282;
+  width: 340px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 33px;
+  line-height: 52px;
+  margin-top: 20px;
+}
+
+.InputBlock a {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #29ADDF;
+}
+
+
+
+.LoginBlock {
+  width: 392px;
+  height: 77px;
+  background: #29ADDF;
+  border-radius: 55px;
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 60px;
+  color: #FFFFFF;
+  border: none;
+}
+
+.Registre {
+  width: 435px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.Registre p {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #828282;
+}
+
+.Registre a {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #29ADDF;
+}
+
+.LoginGeral {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 800px;
+  height: 481px;
+
+}
+
+.selectLogin {
+  border: none;
+  border-bottom: 1px solid #828282;
+  outline: none;
+  height: 74px;
+  background-color: transparent;
+  color: #828282;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 33px;
+}
+
+.ContainerInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.ContainerPermission {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 762px;
+  height: 204px;
+}
+
+.ContainersPermissoes {
+  width: 765px;
+  height: 90px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  color: #292929;
+}
+
+.Permissoes {
+  display: flex;
+  flex-wrap: no-wrap;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  padding: 0 20px;
+}
+
+.Permissoes input[type=radio] {
+  width: 23px;
+  height: 23px;
+  color: #29ADDF;
+  cursor: pointer;
+}
+
+
+input[type=radio]:checked {
+  background-color: #29ADDF;
+}
+
+.Permissoes input {
+  margin-right: 5px;
+
+}
+
+.Permissoes h4 {
+  margin-right: auto;
+}
+
+.Permissoes h5 {
+  margin-right: 10px;
+}
+
+.PermissionBlock {
+  margin-top: 1%;
+  width: 392px;
+  height: 77px;
+  background: #29ADDF;
+  border-radius: 55px;
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 60px;
+  color: #FFFFFF;
+  border: none;
+}
+
+.BotoesBlock {
+  margin-top: 2%;
+  display: flex;
+  width: 100%;
+  height: 59px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons {
+  margin-left: 1%;
+  width: 200px;
+  height: 59px;
+  background: #29ADDF;
+  border-radius: 55px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  color: #FFFFFF;
+  border: none;
+}
+
+.clickVoltar {
+  margin-top: 2%;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  color: #29ADDF;
+  text-decoration: none;
+}
+
+.clickVoltar label {
+  cursor: pointer;
+}
+
+
+
+/* athos, isso aqui é do Fernando, não lembro porque escrevi "athos" */
+.botaozada .btn {
+  display: inline-block;
+  background-color: #29ADDF;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 55px;
+  font-family: 'Poppins';
+}
+
+.botaozada .btn-secondary {
+  background-color: #29ADDF;
+  margin-left: 10px;
+}
