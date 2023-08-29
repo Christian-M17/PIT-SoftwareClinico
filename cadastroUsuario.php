@@ -133,23 +133,8 @@
 
 
 
-  <script src="script.js"></script>
-  <script>function formatarNome(inputElement) {
-      inputElement.addEventListener('input', function() {
-        var inputValue = inputElement.value;
-        
-        // Remover caracteres não permitidos
-        inputValue = inputValue.replace(/[^A-Za-z ]/g, '');
-        
-        // Verificar se o primeiro caractere é uma letra
-        if (inputValue.length > 0 && !/^[A-Za-z]/.test(inputValue.charAt(0))) {
-          inputValue = inputValue.substring(1);
-        }
-        
-        // Atualizar o valor do campo de entrada com a máscara aplicada
-        inputElement.value = inputValue;
-      });
-    }</script>
+  <script src="scripts/script.js"></script>
+
 
 </body>
 

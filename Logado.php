@@ -26,44 +26,28 @@
       </form>
       
       <?php
-         $servername = "db4free.net";
-         $username = "userpit";
-         $password = "senhapit";
-         $database = "pitclinica";
-      $conn = new mysqli($servername, $username, $password, $database);
+        // Classes
+        include_once "classes/sql.php";
+        include_once "classes/permissoes.php";
+        
 
+        $conexao = new conexaosql();
+        $permissoes = $conexao->PegarPermissoes($login);
+        $per = new Permissoes($permissoes);
+
+        // Fim das Classes
       
       if (isset($_POST['cadastroLogin'])) {
         
-        $sql = "SELECT permissoes FROM usuario WHERE login='" . $login . "'";
-        $result = mysqli_query($conn, $sql);
+        $per->AcessoCadastroU();
 
-        if (!$result) {
-          die("Query Failed.");
-        }
 
-        $row = $result->fetch_array(MYSQLI_ASSOC);
-        if ($row["permissoes"] == 1 || $row["permissoes"] == 3) {
-          header("Location: cadastroUsuario.php");
-          exit();
-        }
       }
       if (isset($_POST['cadastroCliente'])) {
         
-        $sql = "SELECT permissoes FROM usuario WHERE login='" . $login . "'";
-        $result = mysqli_query($conn, $sql);
-
-        if (!$result) {
-          die("Query Failed.");
-        }
-
-        $row = $result->fetch_array(MYSQLI_ASSOC);
-        if ($row["permissoes"] == 2 || $row["permissoes"] == 3) {
-          header("Location: cadastroCliente.php");
-          exit();
-        }
+        $per->AcessoCadastroC();
       }
-      mysqli_close($conn);
+      
       ?>
 
     </div>

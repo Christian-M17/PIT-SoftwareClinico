@@ -16,7 +16,7 @@
     <section class="LoginContainer">
       <p>Login</p>
       <div class="line"></div>
-      <form action="login.php" method="POST">
+      <form action="validasenha.php" method="POST">
         <div class="InputBlock">
           <input type="text" name="login" placeholder="Login">
           <input type="password" name="senha" placeholder="Senha">
@@ -29,40 +29,11 @@
         <a href="index.html" class="clickVoltar"><label>Voltar ></label></a>
       </form>
 
-      <?php
-      if (isset($_POST['enviar'])) {
-        $servername = "db4free.net";
-        $username = "userpit";
-        $password = "senhapit";
-        $database = "pitclinica";
-        $conn = new mysqli($servername, $username, $password, $database);
-
-        $login = $_POST["login"];
-        $senha = $_POST["senha"];
-        $sql = "SELECT senha FROM usuario WHERE login='" . $login . "'";
-        $result = mysqli_query($conn, $sql);
-
-        if (!$result) {
-          die("Query Failed.");
-        } else {
-          $row = $result->fetch_array(MYSQLI_ASSOC);
-
-          if ($row != null) {
-            $senhavalida = $row["senha"];
-            if ($senha == $senhavalida) {
-              $_SESSION["loginG"] = $login;
-              header("Location: Logado.php");
-              exit();
-            }
-          }
-          mysqli_close($conn);
-        }
-      }
-      ?>
+     
     </section>
   </nav>
 
-  <script src="script.js"></script>
+  <script src="scripts/script.js"></script>
 
 </body>
 
