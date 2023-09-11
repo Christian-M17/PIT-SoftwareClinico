@@ -105,10 +105,7 @@
 }
 
 .button {
-  display: flex;
   padding: 0.5rem 1.875rem;
-  justify-content: center;
-  align-items: center;
   gap: 0.625rem;
   border-radius: 1.875rem;
   background: #1F7AFF;
@@ -121,6 +118,16 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.a{
+  text-decoration: none;
+    color: white;
+}
+
+.a2{
+  text-decoration: none;
+  color: #333;
 }
 
 .button2 {
@@ -140,6 +147,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  cursor: pointer;
 }
 
 .right-content {
@@ -217,6 +225,8 @@
   font-size: 14px;
   letter-spacing: 0;
   line-height: normal;
+  border: none;
+  outline: none;
 }
 
 .codicon-input{

@@ -19,7 +19,7 @@
       <div class="content">
         <label class="text1">LampClinic</label>
         <label class="text2">mais rápido Interface de fácil uso e eficiente.</label>
-        <button class="button">Ver Mais</button>
+        <button class="button"><a class="a" href="index.html">Ver Mais</a></button>
       </div>
 
     </div>
@@ -49,8 +49,8 @@
           </div>
         </div>
         
-        <button name="enviar" type="submit"  class="button2">LOGIN</button>
-        <label class="text3" href="indexsenha.php">Esqueceu a senha?</label>
+        <button name="enviar" type="submit" class="button2">LOGIN</button>
+        <label class="text3" href="indexsenha.php"><a class="a2" href="indexsenha.php">Esqueceu a senha?</a></label>
         <a href="index.html" class="text3"><label>Voltar ></label></a>
 </form>
      

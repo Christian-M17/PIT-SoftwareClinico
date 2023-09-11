@@ -19,7 +19,7 @@
       <div class="content">
         <label class="text1">LampClinic</label>
         <label class="text2">mais rápido Interface de fácil uso e eficiente.</label>
-        <button class="button">Ver Mais</button>
+        <button class="button"><a href="index.html">Ver Mais</a></button>
       </div>
 
     </div>
