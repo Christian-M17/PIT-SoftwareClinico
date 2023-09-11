@@ -64,7 +64,7 @@
         <button name="confirmar" type="submit"  class="button2">Confirmar</button>
         <button class="button2">Bloquear Usuario</button>
         <button class="button2">Cancelar</button>
-        <a href="index.html" class="text3"><label>Voltar ></label></a>
+        <label><a href="index.html" class="text3">Voltar ></a></label>
 </section>
 <section class="right-content2">  
       <div class="input2">
