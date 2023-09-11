@@ -121,6 +121,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+
+  cursor: pointer;
 }
 
 .button2 {
@@ -140,6 +142,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+
+  cursor: pointer;
 }
 
 .right-content {
@@ -219,6 +223,14 @@
   line-height: normal;
   border: none;
 }
+
+.text-wrapper {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #333;
+    outline: none;
+    font-size: 16px;
+ }
 
 .codicon-input{
   height: 2vh;
