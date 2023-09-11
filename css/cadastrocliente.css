@@ -121,6 +121,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+
+  cursor: pointer;
 }
 
 .button2 {
@@ -140,6 +142,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+
+  cursor: pointer;
 }
 
 .right-content {
