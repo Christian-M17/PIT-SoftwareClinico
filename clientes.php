@@ -3,7 +3,7 @@
 
 <head>
   <title>LampClinic</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="css/landingPage.css">
   <link rel="shortcut icon" href="img/logo1.ico" type="image/x-icon">
 </head>
 
