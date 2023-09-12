@@ -10,7 +10,7 @@ if($login == null){
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="css/logadoo.css" rel="stylesheet" type="text/css" />
+  <link href="css/logado.css" rel="stylesheet" type="text/css" />
   <link rel="shortcut icon" href="img/logo1.ico" type="image/x-icon">
   <title>PIT</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +42,7 @@ if($login == null){
       <form method="post" action="">
         <button  class="button" type="submit" name="cadastroLogin">Cadastro de Login</button>
         <button class="button" name="cadastroCliente">Cadastro de Cliente</button>
-        <button  class="button" ><a href="Selecione.html">Cadastro de Login</a></button>
+        <button class="button"><a href="Selecione.html">Software</a></button>
       <a href="login.php" class="clickVoltar"><label>Voltar ></label></a>
       </form>
 
