@@ -105,7 +105,10 @@
 }
 
 .button {
+
   padding: 0.5rem 1.875rem;
+  justify-content: center;
+  align-items: center;
   gap: 0.625rem;
   border-radius: 1.875rem;
   background: #1F7AFF;
@@ -118,16 +121,19 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  cursor: pointer;
+  transition: transform 0.3s ease; 
 }
 
-.a{
-  text-decoration: none;
-    color: white;
+.button:hover {
+  transform: scale(1.1); 
+  transition: transform 0.3s ease; /
 }
 
-.a2{
+
+.button a {
   text-decoration: none;
-  color: #333;
+  color: white;
 }
 
 .button2 {
@@ -147,7 +153,6 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  cursor: pointer;
 }
 
 .right-content {
@@ -158,8 +163,8 @@
   gap: 20px;
   flex-direction: column;
   flex-wrap: nowrap;
-  align-items: flex-start;
   justify-content: space-between;
+  align-items: center;
 }
 
 .right-content .text1 {
@@ -218,17 +223,59 @@
   position: absolute;
   top: 2px;
   left: 32px;
- 
+
   font-family: "Poppins-Regular", Helvetica;
   font-weight: 400;
   color: #333333;
   font-size: 14px;
   letter-spacing: 0;
   line-height: normal;
-  border: none;
-  outline: none;
 }
 
 .codicon-input{
   height: 2vh;
 }
+
+.divform{
+  display: flex;
+    width: 64em;
+    height: 700vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.content1{
+
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 600;
+  color: #333333;
+  font-size: 20px;
+  letter-spacing: 0;
+  display: flex;
+  line-height: normal;
+  flex-direction: column;
+  align-items: center;
+}
+
+.divform form{
+  display: flex;
+    padding: 4em;
+    gap: 1em;
+    width: 30em;
+    height: 30em;
+    flex-direction: column;
+    align-items: center;
+}
+
+.divform a{
+  font-family: "Poppins-Regular", Helvetica;
+    font-weight: 600;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    text-decoration: none;
+}
+

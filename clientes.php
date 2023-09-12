@@ -58,6 +58,11 @@ while ($counter <= 10) {
         <h4>Registro de Procedimento:</h4>
         <p>xxxxxx</p>
       </div>
+      <div class='procedure-record'>
+      <h4>Adicionar Anotações:</h4>
+      <textarea rows='4' cols='50'></textarea>
+      <button type='button'>Salvar Anotações</button>
+    </div>
     </div>";
     }
     

@@ -44,7 +44,8 @@ main {
   flex-wrap: wrap;
   align-content: center;
   justify-content: space-around;
-  padding: 40px 82px
+  padding: 40px 82px;
+  gap:3em;
 }
 
 .left-content {
@@ -315,8 +316,12 @@ a {
 }
 
 .procedure-record {
-  text-align: left;
-  margin: 20px 3vw;
+  display: flex;
+    gap: 1em;
+    text-align: left;
+    margin: 20px 3vw;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .procedure-record h4 {
@@ -761,4 +766,19 @@ ACESSAR CONTA E CADASTRAR COM SUPORTE
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.procedure-record button{
+  border-radius: 1.875rem;
+  background: #1F7AFF;
+  width: 12em;
+  height: 3.5em;
+  border: none;
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
 }

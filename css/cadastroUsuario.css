@@ -214,7 +214,6 @@ a{
   position: absolute;
   top: 2px;
   left: 32px;
-  opacity: 0.3;
   font-family: "Poppins-Regular", Helvetica;
   font-weight: 400;
   color: #333333;
@@ -329,7 +328,7 @@ form{
   }
   
   .input2 .text-wrapper {
-    opacity: 0.3;
+
     font-family: "Poppins-Regular", Helvetica;
     font-weight: 400;
     color: #333333;
