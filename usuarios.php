@@ -39,6 +39,7 @@
         <h4>Escreve algo ai</h4>
         <p>xxxxxx</p>
         <button type='button'>Editar</button>
+        <button type='button'>Bloquear</button>
       </div>
       
     </div>
