@@ -1,3 +1,9 @@
+<?php session_start();
+$login = $_SESSION["loginG"];
+if($login == null){
+  header("Location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -21,12 +27,16 @@
   <main>
   <?php         
 $counter = 1;
+$cpfpicker = [];
 include_once "classes/sql.php";
 $conexao = new conexaosql();  
 
-while ($counter <= 10) {  
-  echo $conexao->imprimirClientes($id);
-  $counter++; 
+while ($counter <= 10) {
+  $cpfpicker[$counter] = $conexao ->  pegaCpf($counter);
+  echo $conexao->imprimirClientes($counter);
+  
+  $counter++;
+
 }
 ?>
 

@@ -1,5 +1,6 @@
 <?php
 
+
 class conexaosql {
   private $conn;
   
@@ -160,6 +161,7 @@ public function cadastrarClientes($nome, $cpf, $date, $sexo){
   
 
 public function imprimirClientes($id){
+
     $sql = "SELECT nome, dataNascimento, cpf  FROM cliente WHERE id='" . $id . "'";
     $result = mysqli_query($this->conn, $sql);
   
@@ -168,40 +170,51 @@ public function imprimirClientes($id){
     } else {
       $row = $result->fetch_array(MYSQLI_ASSOC);
   
+      
       if ($row != null) {
         $nome = $row["nome"];
         $data = $row["dataNascimento"];
         $cpf = $row["cpf"];
-        $parte1 = "<div class='patient-info-container'>
+        $resultado = "<div class='patient-info-container'>
         <h2>Informações do Paciente</h2>
         <div class='patient-profile'>
           <div class='profile-picture2'>
             <img src='img/lampada.jpg' alt='Profile Picture'>
           </div>
           <div class='profile-details'>
-            <h3 name=teste" . $id . ">" . $nome . "</h3>
+            <h3>" . $nome . "</h3>
             <p>". $data . "</p>
             <p>" . $cpf . "</p>
           </div>
-        </div>";
-        $teste = $_POST["teste" . $id];
-        $parte2 = 
-        "<div class='procedure-record'>
+        </div>
+        <div class='procedure-record'>
           <h4>Registro de Procedimento:</h4>
           <p>xxxxxx</p>
         </div>
         <div class='procedure-record'>
-        <h4>Adicionar Anotações:" . $teste . "</h4>
+        <h4>Adicionar Anotações:</h4>
         <textarea rows='4' cols='50'></textarea>
         <button type='button'>Salvar Anotações</button>
       </div>
       </div>";
-      return $parte1 . $parte2;
+      return $resultado;
       }
       
     }
-    mysqli_close($this->conn);
   }
- 
+ public function pegaCpf($id){
+    $sql = "SELECT nome, dataNascimento, cpf  FROM cliente WHERE id='" . $id . "'";
+    $result = mysqli_query($this->conn, $sql);
+  
+    if (!$result) {
+      die("Query Failed.");
+    } else {
+      $row = $result->fetch_array(MYSQLI_ASSOC);
+  
+      
+      if ($row != null) {
+        $cpf = $row["cpf"];
+      return $cpf;
+      }}}
 
   }
