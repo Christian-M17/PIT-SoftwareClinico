@@ -50,7 +50,7 @@
 </div>
 
         <button type="submit" name="confirmar"  class="button2">Fazer Pedido</button>
-        <label> <a href="index.html" class="text3">Voltar ></a></label>
+        <label> <a href="login.php" class="text3">Voltar ></a></label>
 </form>
      
     </div>
