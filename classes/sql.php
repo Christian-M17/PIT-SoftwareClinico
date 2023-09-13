@@ -185,6 +185,36 @@ public function cadastrarClientes($nome, $cpf, $date, $sexo){
     
    }
 
+   public function cadastrarProcedimento($nome, $tipo, $duracao){
+    
+
+    $sql = "Select nome from procedimentos where nome='" . $nome . "'";
+    $result = mysqli_query($this->conn, $sql);
+
+    if (!$result) { die("Query Failed."); }
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+
+    if ($row == null)
+    {
+      
+      
+    
+      $sqlenvia = "insert into procedimentos(nome, tipo, duracao) values('" . $nome . "','". $tipo . "','" . $duracao . "')";
+      if (mysqli_query($this->conn, $sqlenvia)) {
+        return "<script>alert('Dados inseridos com sucesso!'); </script>";
+    } else {
+        return "<script>alert('Erro: " . mysqli_error($this->conn) . "');' </script>";
+    }
+
+    mysqli_close($this->conn);
+    }
+    else{
+      return "<script>alert('Item já existente!'); </script>";
+    }
+    
+   }
+
+
   
   
 
