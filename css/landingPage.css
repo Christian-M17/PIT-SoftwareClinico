@@ -35,6 +35,7 @@ header {
   background-color: #1F9AF3;
   padding: 10px 20px;
   border: none;
+  color: white;
   border-radius: 4px;
   cursor: pointer;
 }
