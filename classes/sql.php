@@ -49,4 +49,43 @@ class conexaosql {
     return $row['permissoes'];}
 
   }
+
+  public function cadastrarUsuario($nome, $login, $senha, $EditarUsuario, $EditarFichas){
+    $sql ="Select login from usuario where login='" . $login . "'";
+    $result = mysqli_query($this->conn, $sql);
+
+    
+    if (!$result) { die("Query Failed."); }
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+
+    if ($row == null)
+    {
+      
+      if($EditarUsuario == "S" && $EditarFichas == "S"){
+        $permissoes = 3;
+      }
+      else if($EditarUsuario == "S"){
+        $permissoes = 1;
+      }
+      else if($EditarFichas == "S"){
+        $permissoes = 2;
+      }
+      else{
+        $permissoes = 0;
+      }
+    
+      $sqlenvia = "insert into usuario(nome, login, senha, Tipo_idTipo, permissoes) values('" . $nome . "','". $login . "','" . $senha ."',1," . $permissoes . ")";
+      if (mysqli_query($this->conn, $sqlenvia)) {
+        return 1;
+    } else {
+        return 2;
+    }
+
+    mysqli_close($this->conn);
+    }
+    else{
+      return 3;
+    }
+    
+  }
 }

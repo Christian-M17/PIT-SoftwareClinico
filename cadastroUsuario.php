@@ -25,7 +25,7 @@
     </div>
     <div class="half-white">
       <!-- Conteúdo da metade branca -->
-      <form action="validasenha.php" method="POST">
+      <form action="cadastrousuario.php" method="POST">
       <section class="right-content">  
         <label class="text2">Digite seu Cadastro</label>
         <div class="input">
@@ -101,11 +101,7 @@
   </div>
   <?php
   if (isset($_POST['confirmar'])) {
-        $servername = "db4free.net";
-        $username = "userpit";
-        $password = "senhapit";
-        $database = "pitclinica";
-        $conn = new mysqli($servername, $username, $password, $database);
+       
 
 
 
@@ -120,43 +116,21 @@
       $senha = $_POST["senha"];
       $confirmaSenha = $_POST["ConfirmaSenha"];
       if($senha == $confirmaSenha){
-      $sqlverifica = "Select login from usuario where login='" . $login . "'";
-      $result = mysqli_query($conn, $sqlverifica);
+        include_once "classes/sql.php";
+      $EditarUsuario = $_POST['EditarUsuario'];
+      $EditarFichas = $_POST['EditarFichas'];
 
-      
-      if (!$result) { die("Query Failed."); }
-      $row = $result->fetch_array(MYSQLI_ASSOC);
+      $conexao = new conexaosql();
 
-      if ($row == null)
-      {
-        $EditarUsuario = $_POST['EditarUsuario'];
-        $EditarFichas = $_POST['EditarFichas'];
-        if($EditarUsuario == "S" && $EditarFichas == "S"){
-          $permissoes = 3;
-        }
-        else if($EditarUsuario == "S"){
-          $permissoes = 1;
-        }
-        else if($EditarFichas == "S"){
-          $permissoes = 2;
-        }
-        else{
-          $permissoes = 0;
-        }
-      
-        $sqlenvia = "insert into usuario(nome, login, senha, Tipo_idTipo, permissoes) values('" . $nome . "','". $login . "','" . $senha ."',1," . $permissoes . ")";
-        if (mysqli_query($conn, $sqlenvia)) {
-          echo"<script>alert('Dados inseridos com sucesso!'); </script>";
-      } else {
-          echo "<script>alert('Erro: " . mysqli_error($conn) . "');' </script>";
-      }
+      $resultado = $conexao->cadastrarUsuario($nome, $login, $senha, $EditarUsuario, $EditarFichas);
 
-      mysqli_close($conn);
+      if($resultado == 1){
+      echo   "<script>alert('Dados inseridos com sucesso!'); </script>";
       }
       else{
-        echo "<script>alert('Login já existente!'); </script>";
+        echo "<script>alert('Login já existe ou erro no banco'); </script>";
       }
-      
+
       }else{
         echo "<script>alert('SENHA NÃO CONFERE!'); </script>";
     }}
