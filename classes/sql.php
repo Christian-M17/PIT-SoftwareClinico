@@ -175,7 +175,9 @@ public function imprimirClientes($id){
         $nome = $row["nome"];
         $data = $row["dataNascimento"];
         $cpf = $row["cpf"];
-        $resultado = "<div class='patient-info-container'>
+        $resultado = "
+        <form>
+        <div class='patient-info-container'>
         <h2>Informações do Paciente</h2>
         <div class='patient-profile'>
           <div class='profile-picture2'>
@@ -194,9 +196,11 @@ public function imprimirClientes($id){
         <div class='procedure-record'>
         <h4>Adicionar Anotações:</h4>
         <textarea rows='4' cols='50'></textarea>
-        <button type='button'>Salvar Anotações</button>
+        <input class='input' type='submit'>Salvar Anotações</input>
       </div>
-      </div>";
+      </div>
+      </form>
+      ";
       return $resultado;
       }
       
