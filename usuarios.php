@@ -19,27 +19,22 @@
     </div>
   </header>
   <main>
-   <div class='patient-info-container'>
-      <h2>Informações do Usuario</h2>
-      <div class='patient-profile'>
-        <div class='profile-picture2'>
-          <img src='img/lampada.jpg' alt='Profile Picture'>
-        </div>
-        <div class='profile-details'>
-          <h3>" . $nome . "</h3>
-          <p>". $login . "</p>
-        </div>
-      </div>
-      <div class='procedure-record'>
-        <h4>Escreve algo ai</h4>
-        <p>xxxxxx</p>
-      </div>
-      <div class='procedure-record'>
-        <button type='button'>Editar</button>
-        <button type='button'>Bloquear</button>
-      </div>
-      
-    </div>
+   <?php 
+   $counter = 1;
+
+   include_once "classes/sql.php";
+$conexao = new conexaosql();  
+
+while ($counter <= 10) {
+  echo $conexao->imprimirUsuarios($counter);
+  $counter++;
+}
+
+if (isset($_POST['bloquear'])) {
+  $valor = $_POST['bloquear'];
+  echo $conexao->bloquear($valor);}
+?>
+   ?>
   </main>
 </body>
 

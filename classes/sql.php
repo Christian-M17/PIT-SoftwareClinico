@@ -224,8 +224,68 @@ public function anotar($id, $anotar){
         mysqli_close($this->conn);
         }
             }
+public function imprimirUsuarios($id){
+
+              $sql = "SELECT nome, Login, Tipo_idTipo, permissoes  FROM usuario WHERE idUsuario='" . $id . "'";
+              $result = mysqli_query($this->conn, $sql);
+            
+              if (!$result) {
+                die("Query Failed.");
+              } else {
+                $row = $result->fetch_array(MYSQLI_ASSOC);
+            
+                
+                if ($row != null) {
+                  $nome = $row["nome"];
+                  $login = $row["Login"];
+                  $tipo = $row["Tipo_idTipo"];
+                  $permissoes = $row["permissoes"];
+                  $resultado = "
+                  <form method='POST' action=''>
+                  <div class='patient-info-container'>
+                <h2>Informações do Usuario</h2>
+                <div class='patient-profile'>
+                  <div class='profile-picture2'>
+                    <img src='img/lampada.jpg' alt='Profile Picture'>
+                  </div>
+                  <div class='profile-details'>
+                    <h3>" . $nome . "</h3>
+                    <p>Login: ". $login . "</p>
+                    <p>Tipo: ". $tipo . "</p>
+                    <p> Permissoes: ". $permissoes . "</p>
+                  </div>
+                </div>
+                <div class='procedure-record'>
+                  <button name='bloquear' type='submit' value=" . $id . ">Bloquear</button>
+                </div>
+                
+              </div>
+              </form>
+                ";
+                return $resultado;
+                }
+                
+              }
+            }
+public function bloquear($id){
+
+        {
+          $sql = "UPDATE usuario SET permissoes='0' WHERE idUsuario=" . $id;
+
+          
+        
+          if (mysqli_query($this->conn, $sql)) {
+            return "<script>alert('Dados inseridos com sucesso!'); </script>";
+        } else {
+            return "<script>alert('Erro: " . mysqli_error($this->conn) . "');' </script>";
+        }
+    
+        mysqli_close($this->conn);
+        }
+            }
   }
 
+  
   
   
     
