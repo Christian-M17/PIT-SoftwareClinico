@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="css/login.css" rel="stylesheet" type="text/css" />
+  <link href="css/cadastrocliente.css" rel="stylesheet" type="text/css" />
   <link rel="shortcut icon" href="img/logo1.ico" type="image/x-icon">
   <title>PIT</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,28 +15,28 @@
 <body>
   <div class="tela">
     <div class="half-blue">
-      <!-- Conteúdo da metade azul -->
+   
       <div class="content">
         <label class="text1">LampClinic</label>
         <label class="text2">mais rápido Interface de fácil uso e eficiente.</label>
-        <button class="button"><a class="a" href="index.html">Ver Mais</a></button>
+        <button class="button"><a href="index.html">Ver Mais</a></button>
       </div>
 
     </div>
     <div class="half-white">
-      <!-- Conteúdo da metade branca -->
-      <form class="right-content" action="validasenha.php" method="POST">
-        <label class="text1">OLá</label>
-        <label class="text2">Digite seu login</label>
+
+      <form class="right-content" method="POST">
+        <label class="text1">Recuperação</label>
+        <label class="text2">Faça um pedido para o admnistrador</label>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper" type="text" name="login" placeholder="Login">
+          <input class="text-wrapper" type="text" name="nome" oninput="formatarNome(this)" placeholder="Nome">
             <img class="codicon-input" src="img/Vector.png" />
           </div>
         </div>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper" type="text" name="senha" placeholder="Senha">
+          <input class="text-wrapper"type="text" name="login" placeholder="login">
             <img class="codicon-input" src="img/Vector-2.png" />
           </div>
         </div>
@@ -47,11 +47,10 @@
           </select>
             <img class="codicon-input" src="img/Vector-1.png" />
           </div>
-        </div>
-        
-        <button name="enviar" type="submit" class="button2">LOGIN</button>
-        <label class="text3"><a class="a2" href="recuperarsenha.php">Esqueceu a senha?</a></label>
-        <label> <a href="index.html" class="text3"> Voltar ></a></label>
+</div>
+
+        <button type="submit" name="confirmar"  class="button2">Fazer Pedido</button>
+        <label> <a href="login.php" class="text3">Voltar ></a></label>
 </form>
      
     </div>
@@ -60,6 +59,29 @@
   </div>
   </div>
   </div>
+  <?php 
+       
+       if (isset($_POST['enviar'])) {
+        
+
+
+
+
+
+
+
+      
+        $login = $_POST["login"];
+        $nome = $_POST["nome"];
+        include_once "classes/sql.php";
+        $conexao = new conexaosql();
+  
+        echo $conexao->recuperarSenha($login, $nome);}
+    
+      
+      ?>
+    
+      <script src="script.js"></script>
 </body>
 
 </html>
