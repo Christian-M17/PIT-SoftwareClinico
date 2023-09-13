@@ -42,6 +42,7 @@
         </div>
         <div class="input">
           <div class="placeholder">
+            // mudar o icone de email para um condizente com sexo e consertar o bug da linha que fica após escolher o email
           <select class="text-wrapper" name="sexo">
           <option value="0">Masculino</option>
               <option  value="1">Feminino</option>
