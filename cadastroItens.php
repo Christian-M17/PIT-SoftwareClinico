@@ -25,7 +25,7 @@
     </div>
     <div class="half-white">
       <!-- Conteúdo da metade branca -->
-      <form class="right-content" action="validasenha.php" method="POST">
+      <form class="right-content" action="" method="POST">
         <label class="text1">BEM VINDO</label>
         <label class="text2">Digite seu Cadastro de Itens</label>
         <div class="input">
@@ -50,7 +50,20 @@
         <button name="enviar" type="submit"  class="button2">Cancelar</button>
         <label> <a href="Logado.php" class="text3">Voltar ></a></label>
 </form>
+     <?php 
+
+if (isset($_POST['confirmar'])) {
+     $nome = $_POST["nome"];
+     $quantidade = $_POST["quantidade"];
+     $valor = $_POST["valor"];
+     include_once "classes/sql.php";
+     $conexao = new conexaosql();  
      
+     echo $conexao->cadastrarItens($nome, $quantidade, $valor);}
+
+    
+
+     ?>
     </div>
 
 

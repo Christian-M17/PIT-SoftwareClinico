@@ -154,8 +154,36 @@ public function cadastrarClientes($nome, $cpf, $date, $sexo){
     }
     
    }
-  
 
+
+   public function cadastrarItens($nome, $quantidade, $valor){
+    
+
+    $sql = "Select nome from Itens where nome='" . $nome . "'";
+    $result = mysqli_query($this->conn, $sql);
+
+    if (!$result) { die("Query Failed."); }
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+
+    if ($row == null)
+    {
+      
+      
+    
+      $sqlenvia = "insert into Itens(nome, qntd, valor) values('" . $nome . "','". $quantidade . "','" . $valor . "')";
+      if (mysqli_query($this->conn, $sqlenvia)) {
+        return "<script>alert('Dados inseridos com sucesso!'); </script>";
+    } else {
+        return "<script>alert('Erro: " . mysqli_error($this->conn) . "');' </script>";
+    }
+
+    mysqli_close($this->conn);
+    }
+    else{
+      return "<script>alert('Item já existente!'); </script>";
+    }
+    
+   }
 
   
   
@@ -282,6 +310,47 @@ public function bloquear($id){
     
         mysqli_close($this->conn);
         }
+            }
+public function imprimirItens($id){
+
+              $sql = "SELECT nome, qntd, valor FROM Itens WHERE id='" . $id . "'";
+              $result = mysqli_query($this->conn, $sql);
+            
+              if (!$result) {
+                die("Query Failed.");
+              } else {
+                $row = $result->fetch_array(MYSQLI_ASSOC);
+            
+                
+                if ($row != null) {
+                  $nome = $row["nome"];
+                  $quantidade = $row["qntd"];
+                  $valor = $row["valor"];
+                  
+                  $resultado = "
+                  <form method='POST' action=''>
+                  <div class='patient-info-container'>
+                <h2>Informações do Iten</h2>
+                <div class='patient-profile'>
+                  <div class='profile-picture2'>
+                    <img src='img/lampada.jpg' alt='Profile Picture'>
+                  </div>
+                  <div class='profile-details'>
+                    <h3>" . $nome . "</h3>
+                    <p>Quantidade : ". $quantidade . "</p>
+                    <p>Valor: ". $valor . "</p>
+                    
+                  </div>
+                </div>
+                
+                
+              </div>
+              </form>
+                ";
+                return $resultado;
+                }
+                
+              }
             }
   }
 
