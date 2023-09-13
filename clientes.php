@@ -40,6 +40,11 @@ while ($counter <= 10) {
   $counter++;
 
 }
+
+if (isset($_POST['editar'])) {
+  $valor = $_POST['editar'];
+  $texto = $_POST['texto' . $valor];
+  echo $conexao->anotar($valor, $texto);}
 ?>
 
    
