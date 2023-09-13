@@ -29,11 +29,14 @@ header {
 .centered-words span {
   margin: 0 10px;
   color: white;
+  display: inline-block;
+  border-bottom: 1px solid white;
 }
 
 .header-button {
   background-color: #1F9AF3;
   padding: 10px 20px;
+  color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -58,6 +61,8 @@ main {
   font-size: 24px;
   margin-bottom: 20px;
   color: white;
+  display: inline-block;
+  border-bottom: 1px solid white;
 }
 
 .subtitle {
