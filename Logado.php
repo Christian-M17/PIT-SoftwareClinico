@@ -43,7 +43,7 @@ if($login == null){
         <button  class="button" type="submit" name="cadastroLogin">Cadastro de Login</button>
         <button class="button" type="submit" name="cadastroCliente">Cadastro de Cliente</button>
         <button class="button"><a href="cadastroItens.php">Cadastro de Itens</a></button>
-        <button class="button"><a href="Selecione.html">Software</a></button>
+        <button class="button"><a href="Selecione.php">Software</a></button>
         <button class="button"><a href="login.php" class="clickVoltar">Voltar ></a></button>
       </form>
 
