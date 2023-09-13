@@ -12,7 +12,7 @@ class conexaosql {
       $this->conn = new mysqli($servername, $username, $password, $database);
   }
 
-  public function fazendologin($login_verifica, $senha_verifica) {
+public function fazendologin($login_verifica, $senha_verifica) {
       $sql = "SELECT senha FROM usuario WHERE login='" . $login_verifica . "'";
       $result = mysqli_query($this->conn, $sql);
 
@@ -35,9 +35,36 @@ class conexaosql {
           mysqli_close($this->conn);
       }
   }
+public function recuperarSenha($login, $nome){
+  $sql = "Select nome, senha from usuario where login='" . $login . "'";
+  $result = mysqli_query($this->conn, $sql);
+
+  
+  if (!$result) { die("Query Failed."); }
+  $row = $result->fetch_array(MYSQLI_ASSOC);
+
+  if ($row != null){
+    $nomevalida = $row["nome"];
+     if($nome == $nomevalida){
+     $senha = $row["senha"];
+    $sqlenvia = "insert into alerta(nome, senha) values ('" . $login . "', '" . $senha . "')";
+    if (mysqli_query($this->conn, $sqlenvia)) {
+      return "<script>alert('Pedido realizado com sucesso!'); </script>";
+  } else {
+      return "<script>alert('Erro: " . mysqli_error($this->conn) . "');' </script>";
+  }
+
+      
+      exit();}
+      else{"<script>alert('Nome invalido!'); </script>";}
+  }
+  mysqli_close($this->conn);}
 
 
-  public function PegarPermissoes($login_verifica){
+
+
+public function PegarPermissoes($login_verifica){
+
     $sql = "SELECT permissoes FROM usuario WHERE login='" . $login_verifica . "'";
     $result = mysqli_query($this->conn, $sql);
     
@@ -49,9 +76,9 @@ class conexaosql {
     return $row['permissoes'];}
 
   }
-
-  // Cadastros
-  public function cadastrarUsuario($nome, $login, $senha, $EditarUsuario, $EditarFichas){
+  
+  
+public function cadastrarUsuario($nome, $login, $senha, $EditarUsuario, $EditarFichas){
     $sql ="Select login from usuario where login='" . $login . "'";
     $result = mysqli_query($this->conn, $sql);
 
@@ -89,7 +116,7 @@ class conexaosql {
     }
     
   }
-  public function cadastrarClientes($nome, $cpf, $date, $sexo){
+public function cadastrarClientes($nome, $cpf, $date, $sexo){
     
 
     $sql = "Select cpf from cliente where cpf='" . $cpf . "'";
@@ -129,7 +156,10 @@ class conexaosql {
   
 
 
-  public function imprimirClientes($id){
+  
+  
+
+public function imprimirClientes($id){
     $sql = "SELECT nome, dataNascimento, cpf  FROM cliente WHERE id='" . $id . "'";
     $result = mysqli_query($this->conn, $sql);
   

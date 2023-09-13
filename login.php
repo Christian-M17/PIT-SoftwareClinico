@@ -50,7 +50,7 @@
         </div>
         
         <button name="enviar" type="submit" class="button2">LOGIN</button>
-        <label class="text3"><a class="a2" href="recuperarsenha.php">Esqueceu a senha?</a></label>
+        <label class="text3"><a class="a2" href="indexsenha.php">Esqueceu a senha?</a></label>
         <label> <a href="index.html" class="text3"> Voltar ></a></label>
 </form>
      
