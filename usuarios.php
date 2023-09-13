@@ -27,8 +27,7 @@
         </div>
         <div class='profile-details'>
           <h3>" . $nome . "</h3>
-          <p>". $data . "</p>
-          <p>" . $cpf . "</p>
+          <p>". $login . "</p>
         </div>
       </div>
       <div class='procedure-record'>
@@ -36,8 +35,6 @@
         <p>xxxxxx</p>
       </div>
       <div class='procedure-record'>
-        <h4>Escreve algo ai</h4>
-        <p>xxxxxx</p>
         <button type='button'>Editar</button>
         <button type='button'>Bloquear</button>
       </div>
