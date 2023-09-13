@@ -22,25 +22,27 @@ if($login == null){
     </div>
   </header>
   <main>
-  <form class="pesquisar">
+  <form method='POST' action='' class="pesquisar">
         <label for="numero">Digite um número:</label>
         <input type="number" id="numero" name="numero" min="0" step="1" pattern="[0-9]*" required>
-        <input type="submit" value="Pesquisar">
+        <input type="submit" name="Pesquisa" value="Pesquisa">
     </form>
   <?php         
 $counter = 1;
-$cpfpicker = [];
+
 include_once "classes/sql.php";
 $conexao = new conexaosql();  
 
-while ($counter <= 10) {
-  $cpfpicker[$counter] = $conexao ->  pegaCpf($counter);
-  echo $conexao->imprimirClientes($counter);
-  
-  $counter++;
-
+if (isset($_POST['Pesquisa'])) {
+  $idpesquisa = $_POST['numero'];
+  echo $conexao->imprimirClientes($idpesquisa);
+} else {
+  // Se o botão "Pesquisa" não foi pressionado, exiba todos os clientes.
+  while ($counter <= 10) {
+      echo $conexao->imprimirClientes($counter);
+      $counter++;
+  }
 }
-
 if (isset($_POST['editar'])) {
   $valor = $_POST['editar'];
   $texto = $_POST['texto' . $valor];
