@@ -789,3 +789,31 @@ ACESSAR CONTA E CADASTRAR COM SUPORTE
     max-width: 40em;
     max-height: 13em;
 }
+
+.pesquisar{
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-family: Poppins;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.pesquisar input{
+  display: flex;
+  padding: 0.6em;
+  text-align: center;
+  border-radius: 15px;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  font-family: Poppins;
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

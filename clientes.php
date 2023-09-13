@@ -19,12 +19,14 @@ if($login == null){
       <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
     </div>
     <div class="profile">
-
-  
-      </a>
     </div>
   </header>
   <main>
+  <form class="pesquisar">
+        <label for="numero">Digite um número:</label>
+        <input type="number" id="numero" name="numero" min="0" step="1" pattern="[0-9]*" required>
+        <input type="submit" value="Pesquisar">
+    </form>
   <?php         
 $counter = 1;
 $cpfpicker = [];
