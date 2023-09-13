@@ -81,8 +81,8 @@
 }
 
 .img1{
-  width: 100px;
-  height: 100px;
+  width: 8em;
+  height: 4.8em;
   border-radius: 30px;
 }
 
@@ -90,11 +90,12 @@
   display: flex;
   gap: 1em;
   margin: 1em;
+  padding: 2em;
   align-items: center;
   border-radius: 30px;
   border-width: 1px;
-    border-color: #000000;
-    border-style: solid;
+  border-color: #000000;
+  border-style: solid;
 }
 
 .calendario{
