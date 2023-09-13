@@ -50,6 +50,7 @@ class conexaosql {
 
   }
 
+  // Cadastros
   public function cadastrarUsuario($nome, $login, $senha, $EditarUsuario, $EditarFichas){
     $sql ="Select login from usuario where login='" . $login . "'";
     $result = mysqli_query($this->conn, $sql);
@@ -88,4 +89,89 @@ class conexaosql {
     }
     
   }
-}
+  public function cadastrarClientes($nome, $cpf, $date, $sexo){
+    
+
+    $sql = "Select cpf from cliente where cpf='" . $cpf . "'";
+    $result = mysqli_query($this->conn, $sql);
+
+    if (!$result) { die("Query Failed."); }
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+
+    if ($row == null)
+    {
+      
+      if($sexo == 0){
+        $sexoEnvia = 'M';
+      }
+      else if($sexo == 1){
+        $sexoEnvia = 'F';
+      }
+      else{
+        $sexoEnvia = 'O';
+      }
+      $dataFormatada = date('Y-m-d', strtotime($date));
+    
+      $sqlenvia = "insert into cliente(nome, cpf, dataNascimento, sexo) values('" . $nome . "','". $cpf . "','" . $dataFormatada . "','" . $sexoEnvia . "')";
+      if (mysqli_query($this->conn, $sqlenvia)) {
+        return "<script>alert('Dados inseridos com sucesso!'); </script>";
+    } else {
+        return "<script>alert('Erro: " . mysqli_error($this->conn) . "');' </script>";
+    }
+
+    mysqli_close($this->conn);
+    }
+    else{
+      return "<script>alert('CPF já existente!'); </script>";
+    }
+    
+   }
+  
+
+
+  public function imprimirClientes($id){
+    $sql = "SELECT nome, dataNascimento, cpf  FROM cliente WHERE id='" . $id . "'";
+    $result = mysqli_query($this->conn, $sql);
+  
+    if (!$result) {
+      die("Query Failed.");
+    } else {
+      $row = $result->fetch_array(MYSQLI_ASSOC);
+  
+      if ($row != null) {
+        $nome = $row["nome"];
+        $data = $row["dataNascimento"];
+        $cpf = $row["cpf"];
+        $parte1 = "<div class='patient-info-container'>
+        <h2>Informações do Paciente</h2>
+        <div class='patient-profile'>
+          <div class='profile-picture2'>
+            <img src='img/lampada.jpg' alt='Profile Picture'>
+          </div>
+          <div class='profile-details'>
+            <h3 name=teste" . $id . ">" . $nome . "</h3>
+            <p>". $data . "</p>
+            <p>" . $cpf . "</p>
+          </div>
+        </div>";
+        $teste = $_POST["teste" . $id];
+        $parte2 = 
+        "<div class='procedure-record'>
+          <h4>Registro de Procedimento:</h4>
+          <p>xxxxxx</p>
+        </div>
+        <div class='procedure-record'>
+        <h4>Adicionar Anotações:" . $teste . "</h4>
+        <textarea rows='4' cols='50'></textarea>
+        <button type='button'>Salvar Anotações</button>
+      </div>
+      </div>";
+      return $parte1 . $parte2;
+      }
+      
+    }
+    mysqli_close($this->conn);
+  }
+ 
+
+  }

@@ -69,54 +69,21 @@
   </div>
   <?php
       if (isset($_POST['confirmar'])) {
-        $servername = "db4free.net";
-        $username = "userpit";
-        $password = "senhapit";
-        $database = "pitclinica";
-        $conn = new mysqli($servername, $username, $password, $database);
+        
 
       $nome = $_POST["nome"];
       $cpf = $_POST["cpf"];
       $date = $_POST["data"];
+      $sexo = $_POST["sexo"];
+      
+      include_once "classes/sql.php";
+      $conexao = new conexaosql();  
+      
+      echo $conexao->cadastrarClientes($nome, $cpf, $date, $sexo);}
 
       
       
       
-      $sqlverifica = "Select cpf from cliente where cpf='" . $cpf . "'";
-      $result = mysqli_query($conn, $sqlverifica);
-
-      
-      if (!$result) { die("Query Failed."); }
-      $row = $result->fetch_array(MYSQLI_ASSOC);
-
-      if ($row == null)
-      {
-        $sexo = $_POST["sexo"];
-        if($sexo == 0){
-          $sexoEnvia = 'M';
-        }
-        else if($sexo == 1){
-          $sexoEnvia = 'F';
-        }
-        else{
-          $sexoEnvia = 'O';
-        }
-        $dataFormatada = date('Y-m-d', strtotime($date));
-      
-        $sqlenvia = "insert into cliente(nome, cpf, dataNascimento, sexo) values('" . $nome . "','". $cpf . "','" . $dataFormatada . "','" . $sexoEnvia . "')";
-        if (mysqli_query($conn, $sqlenvia)) {
-          echo "<script>alert('Dados inseridos com sucesso!'); </script>";
-      } else {
-          echo "<script>alert('Erro: " . mysqli_error($conn) . "');' </script>";
-      }
-
-      mysqli_close($conn);
-      }
-      else{
-        echo "<script>alert('CPF já existente!'); </script>";
-      }
-      
-     }
     
       
       
