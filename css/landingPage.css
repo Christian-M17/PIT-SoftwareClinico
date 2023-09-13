@@ -768,7 +768,7 @@ ACESSAR CONTA E CADASTRAR COM SUPORTE
   align-items: center;
 }
 
-.procedure-record button{
+.input{
   border-radius: 1.875rem;
   background: #1F7AFF;
   width: 12em;
@@ -781,4 +781,11 @@ ACESSAR CONTA E CADASTRAR COM SUPORTE
   font-weight: 400;
   line-height: normal;
   cursor: pointer;
+}
+
+.procedure-record textarea{
+  min-width: 40em;
+    min-height: 13em;
+    max-width: 40em;
+    max-height: 13em;
 }
