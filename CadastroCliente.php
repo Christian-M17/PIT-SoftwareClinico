@@ -15,7 +15,7 @@
 <body>a
   <div class="tela">
     <div class="half-blue">
-      <!-- Conteúdo da metade azul -->asdasdasdsad
+      <!-- Conteúdo da metade azul -->
       <div class="content">
         <label class="text1">LampClinic</label>
         <label class="text2">mais rápido Interface de fácil uso e eficiente.</label>
