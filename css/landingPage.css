@@ -29,6 +29,7 @@ header {
 .centered-words span {
   margin: 0 10px;
   color: white;
+  border-bottom: 1px solid white;
 }
 
 .header-button {
@@ -59,6 +60,7 @@ main {
   font-size: 24px;
   margin-bottom: 20px;
   color: white;
+  border-bottom: 1px solid white;
 }
 
 .subtitle {
