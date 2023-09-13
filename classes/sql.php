@@ -196,7 +196,7 @@ public function imprimirClientes($id){
         <div class='procedure-record'>
         <h4>Adicionar Anotações:</h4>
         <textarea rows='4' cols='50'></textarea>
-        <input class='input' type='submit'>Salvar Anotações</input>
+        <button class='input' type='submit'>Salvar Anotações</button>
       </div>
       </div>
       </form>
