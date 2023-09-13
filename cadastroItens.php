@@ -48,7 +48,7 @@
         </div>
         <button type="submit" name="confirmar"  class="button2">Cadastrar</button>
         <button name="enviar" type="submit"  class="button2">Cancelar</button>
-        <label> <a href="index.html" class="text3">Voltar ></a></label>
+        <label> <a href="Logado.php" class="text3">Voltar ></a></label>
 </form>
      
     </div>
