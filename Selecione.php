@@ -32,7 +32,7 @@
     <div class="card">
       <img src="img/agenda-icon.png">
       <div class="card__content">
-         <a href="agenda.html">
+         <a href="agenda.php">
         <p class="card__title">Agenda</p>
         <p class="card__description">o calendário permite agendar recursos, como salas de exames, equipamentos médicos e pessoal, garantindo uma alocação eficiente de recursos.</p>
       </div>
