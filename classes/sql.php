@@ -162,7 +162,7 @@ public function cadastrarClientes($nome, $cpf, $date, $sexo){
 
 public function imprimirClientes($id){
 
-    $sql = "SELECT nome, dataNascimento, cpf  FROM cliente WHERE id='" . $id . "'";
+    $sql = "SELECT nome, dataNascimento, cpf, anotacao  FROM cliente WHERE id='" . $id . "'";
     $result = mysqli_query($this->conn, $sql);
   
     if (!$result) {
@@ -175,8 +175,9 @@ public function imprimirClientes($id){
         $nome = $row["nome"];
         $data = $row["dataNascimento"];
         $cpf = $row["cpf"];
+        $anotacao = $row["anotacao"];
         $resultado = "
-        <form>
+        <form method='POST' action=''>
         <div class='patient-info-container'>
         <h2>Informações do Paciente</h2>
         <div class='patient-profile'>
@@ -195,8 +196,8 @@ public function imprimirClientes($id){
         </div>
         <div class='procedure-record'>
         <h4>Adicionar Anotações:</h4>
-        <textarea rows='4' cols='50'></textarea>
-        <button class='input' type='submit'>Salvar Anotações</button>
+        <textarea name='texto" . $id . "' rows='4' cols='50'>" . $anotacao . "</textarea>
+        <button class='input' name='editar' type='submit' value=" . $id . ">Salvar Anotações</button>
       </div>
       </div>
       </form>
@@ -206,19 +207,26 @@ public function imprimirClientes($id){
       
     }
   }
- public function pegaCpf($id){
-    $sql = "SELECT nome, dataNascimento, cpf  FROM cliente WHERE id='" . $id . "'";
-    $result = mysqli_query($this->conn, $sql);
-  
-    if (!$result) {
-      die("Query Failed.");
-    } else {
-      $row = $result->fetch_array(MYSQLI_ASSOC);
-  
-      
-      if ($row != null) {
-        $cpf = $row["cpf"];
-      return $cpf;
-      }}}
 
+public function anotar($id, $anotar){
+
+        {
+          $sql = "UPDATE cliente SET anotacao='" . $anotar . "' WHERE id=" . $id;
+
+          
+        
+          if (mysqli_query($this->conn, $sql)) {
+            return "<script>alert('Dados inseridos com sucesso!'); </script>";
+        } else {
+            return "<script>alert('Erro: " . mysqli_error($this->conn) . "');' </script>";
+        }
+    
+        mysqli_close($this->conn);
+        }
+            }
   }
+
+  
+  
+    
+  
