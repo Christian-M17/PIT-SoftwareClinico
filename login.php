@@ -51,7 +51,7 @@
         
         <button name="enviar" type="submit" class="button2">LOGIN</button>
         <label class="text3"><a class="a2" href="recuperarsenha.php">Esqueceu a senha?</a></label>
-        <a href="index.html" class="text3"><label>Voltar ></label></a>
+        <label> <a href="index.html" class="text3"> Voltar ></a></label>
 </form>
      
     </div>
