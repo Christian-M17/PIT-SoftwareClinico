@@ -203,7 +203,6 @@ a{
 }
 
 .input .placeholder {
-  position: relative;
   width: 133px;
   height: 24px;
   display: flex;
@@ -213,7 +212,7 @@ a{
 .input .text-wrapper {
   position: absolute;
   top: 2px;
-  left: 32px;
+  left: 5em;
   font-family: "Poppins-Regular", Helvetica;
   font-weight: 400;
   color: #333333;
