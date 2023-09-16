@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;1,200;1,400;1,500;1,600&display=swap');
+
+*{
+  font-family: Poppins;
+}
+
+.body-parte2 {
+    background: linear-gradient(135deg, #1F7AFF, #1F9AF3);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    
+  }
+  
+  header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo img {
+    height: 50px;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  
+    justify-content: center; 
+    align-items: center; 
+    height: 90vh; 
+}
+
+.item {
+    background-color: white;
+    padding: 20px;
+    height: 14.5em;
+    text-align: center;
+    font-size: 24px;
+    border: 1px solid #888;
+    margin: 0em 1em 0em 1em;
+    border-radius: 20px;
+    border: none;
+}
+
+.containerBotao{
+  display: flex;
+  width: 50%;
+  height: 2em;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.botao{
+  display: flex;
+  width: 20em;
+  height: 3em;
+
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.botao img{
+  width: 40px;
+  height: 40px;
+}
+
+.botao label{
+  color: var(--White, #FFF);
+  font-family: Poppins;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.agendamentos {
+  height: 31.5em;
+  grid-row: span 2;
+}
+
+.img1{
+  width: 8em;
+  height: 4.8em;
+  border-radius: 30px;
+}
+
+.medico-item{
+  display: flex;
+  gap: 1em;
+  margin: 1em;
+  padding: 2em;
+  align-items: center;
+  border-radius: 30px;
+  border-width: 1px;
+  border-color: #000000;
+  border-style: solid;
+}
+
+.calendario{
+  display: flex;
+    flex-direction: column;
+}
+
+.agendamento-item{
+  margin: 1em;
+    border-width: 1px;
+    border-color: #000000;
+    border-style: solid;
+    border-radius: 20px;
+}

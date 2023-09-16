@@ -1,9 +1,15 @@
+<?php session_start();
+$login = $_SESSION["loginG"];
+if($login == null){
+  header("Location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
   <title>LampClinic</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="css/landingPage.css">
   <link rel="shortcut icon" href="img/logo1.ico" type="image/x-icon">
 </head>
 
@@ -13,58 +19,34 @@
       <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
     </div>
     <div class="profile">
-
-  
-      </a>
     </div>
   </header>
   <main>
-  <?php 
-  $servername = "db4free.net";
-        $username = "userpit";
-        $password = "senhapit";
-        $database = "pitclinica";
-        $conn = new mysqli($servername, $username, $password, $database);
+  <form method='POST' action='' class="pesquisar">
+        <label for="numero">Digite um número:</label>
+        <input type="number" id="numero" name="numero" min="0" step="1" pattern="[0-9]*" required>
+        <input type="submit" name="Pesquisa" value="Pesquisa">
+    </form>
+  <?php         
+$counter = 1;
 
-        
-$counter = 1;  
+include_once "classes/sql.php";
+$conexao = new conexaosql();  
 
-while ($counter <= 10) {  
-  $sql = "SELECT nome, dataNascimento, cpf  FROM cliente WHERE id='" . $counter . "'";
-  $result = mysqli_query($conn, $sql);
-
-  if (!$result) {
-    die("Query Failed.");
-  } else {
-    $row = $result->fetch_array(MYSQLI_ASSOC);
-
-    if ($row != null) {
-      $nome = $row["nome"];
-      $data = $row["dataNascimento"];
-      $cpf = $row["cpf"];
-      echo "<div class='patient-info-container'>
-      <h2>Informações do Paciente</h2>
-      <div class='patient-profile'>
-        <div class='profile-picture2'>
-          <img src='img/lampada.jpg' alt='Profile Picture'>
-        </div>
-        <div class='profile-details'>
-          <h3>" . $nome . "</h3>
-          <p>". $data . "</p>
-          <p>" . $cpf . "</p>
-        </div>
-      </div>
-      <div class='procedure-record'>
-        <h4>Registro de Procedimento:</h4>
-        <p>xxxxxx</p>
-      </div>
-    </div>";
-    }
-    
+if (isset($_POST['Pesquisa'])) {
+  $idpesquisa = $_POST['numero'];
+  echo $conexao->imprimirClientes($idpesquisa);
+} else {
+  // Se o botão "Pesquisa" não foi pressionado, exiba todos os clientes.
+  while ($counter <= 10) {
+      echo $conexao->imprimirClientes($counter);
+      $counter++;
   }
-    $counter++;  // Incrementa o contador em 1
 }
-mysqli_close($conn);
+if (isset($_POST['editar'])) {
+  $valor = $_POST['editar'];
+  $texto = $_POST['texto' . $valor];
+  echo $conexao->anotar($valor, $texto);}
 ?>
 
    

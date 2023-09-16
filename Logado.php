@@ -1,72 +1,87 @@
-<?php session_start(); ?>
+ <?php session_start();
+$login = $_SESSION["loginG"];
+if($login == null){
+  header("Location: login.php");
+}
+?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/logado.css" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" href="img/logo1.ico" type="image/x-icon">
   <title>PIT</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
-  <link rel="shortcut icon" href="img/logo.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
-<body class="primeiro-body">
-  <nav class="LoginGeral">
-    <section class="LoginContainer">
-      <p>Login: <?php
+
+<body>
+  <div class="tela">
+    <div class="half-blue">
+      <!-- Conteúdo da metade azul -->
+      <div class="content">
+        <label class="text1">LampClinic</label>
+        <label class="text2">mais rápido Interface de fácil uso e eficiente.</label>
+        <button class="button">Ver Mais</button>
+      </div>
+
+    </div>
+    <div class="half-white">
+      <!-- Conteúdo da metade branca -->
+      <div class="right-content">
+      <div class="content1">
+      <p class="text-wrapper">Login: <?php
       $login = $_SESSION["loginG"];
       echo $login;?></p>
-    </section>
     <article class="Registre"></article>
-    <div class="botaozada">
+</div>
+    <div class="divform">
       <form method="post" action="">
-        <button class="btn" type="submit" name="cadastroLogin">Cadastro de Login</button>
-        <button class="btn btn-secondary" name="cadastroCliente">Cadastro de Cliente</button>
-
-      <a href="login.php" class="clickVoltar"><label>Voltar ></label></a>
+        <button  class="button" type="submit" name="cadastroLogin">Cadastro de Login</button>
+        <button class="button" type="submit" name="cadastroCliente">Cadastro de Cliente</button>
+        <button class="button"><a href="cadastroItens.php">Cadastro de Itens</a></button>
+        <button class="button"><a href="cadastroProcedimento.php">Cadastro Procedimentos</a></button>
+        <button class="button"><a href="Selecione.php">Software</a></button>
+        <button class="button"><a href="login.php" class="clickVoltar">Voltar ></a></button>
       </form>
-      
-      <?php
-         $servername = "db4free.net";
-         $username = "userpit";
-         $password = "senhapit";
-         $database = "pitclinica";
-      $conn = new mysqli($servername, $username, $password, $database);
 
+
+</div>
+    </div>
+
+
+    <?php
+        // Classes
+        include_once "classes/sql.php";
+        include_once "classes/permissoes.php";
+        
+
+        $conexao = new conexaosql();
+        $permissoes = $conexao->PegarPermissoes($login);
+        $per = new Permissoes($permissoes);
+
+        // Fim das Classes
       
       if (isset($_POST['cadastroLogin'])) {
         
-        $sql = "SELECT permissoes FROM usuario WHERE login='" . $login . "'";
-        $result = mysqli_query($conn, $sql);
+        $per->AcessoCadastroU();
 
-        if (!$result) {
-          die("Query Failed.");
-        }
 
-        $row = $result->fetch_array(MYSQLI_ASSOC);
-        if ($row["permissoes"] == 1 || $row["permissoes"] == 3) {
-          header("Location: cadastroUsuario.php");
-          exit();
-        }
       }
       if (isset($_POST['cadastroCliente'])) {
         
-        $sql = "SELECT permissoes FROM usuario WHERE login='" . $login . "'";
-        $result = mysqli_query($conn, $sql);
-
-        if (!$result) {
-          die("Query Failed.");
-        }
-
-        $row = $result->fetch_array(MYSQLI_ASSOC);
-        if ($row["permissoes"] == 2 || $row["permissoes"] == 3) {
-          header("Location: cadastroCliente.php");
-          exit();
-        }
+        $per->AcessoCadastroC();
       }
-      mysqli_close($conn);
+      
       ?>
 
-    </div>
-  </nav>
+
+  </div>
+  </div>
+  </div>
 </body>
+
 </html>

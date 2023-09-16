@@ -61,8 +61,13 @@
   </div>
   <?php 
        
-       if (isset($_POST['enviar'])) {
-        
+      if (isset($_POST['enviar'])) {
+        $servername = "db4free.net";
+        $username = "userpit";
+        $password = "senhapit";
+        $database = "pitclinica";
+      $conn = new mysqli($servername, $username, $password, $database);
+
 
 
 
@@ -71,13 +76,33 @@
 
 
       
-        $login = $_POST["login"];
-        $nome = $_POST["nome"];
-        include_once "classes/sql.php";
-        $conexao = new conexaosql();
-  
-        echo $conexao->recuperarSenha($login, $nome);}
-    
+      $login = $_POST["login"];
+      
+      $nome = $_POST["nome"];
+      $sql = "Select nome, senha from usuario where login='" . $login . "'";
+      $result = mysqli_query($conn, $sql);
+
+      
+      if (!$result) { die("Query Failed."); }
+      $row = $result->fetch_array(MYSQLI_ASSOC);
+
+      if ($row != null){
+        $nomevalida = $row["nome"];
+         if($nome == $nomevalida){
+         $senha = $row["senha"];
+        $sqlenvia = "insert into alerta(nome, senha) values ('" . $login . "', '" . $senha . "')";
+        if (mysqli_query($conn, $sqlenvia)) {
+          echo "<script>alert('Pedido realizado com sucesso!'); </script>";
+      } else {
+          echo "<script>alert('Erro: " . mysqli_error($conn) . "');' </script>";
+      }
+
+          
+          exit();}
+          else{"<script>alert('Nome invalido!'); </script>";}
+      }
+      mysqli_close($conn);
+    }
       
       ?>
     

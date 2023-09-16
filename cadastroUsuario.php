@@ -1,67 +1,113 @@
+<?php
+session_start();
+$login = $_SESSION["loginG"];
+if($login == null){
+  header("Location: login.php");
+}?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/cadastroUsuario.css" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" href="img/logo1.ico" type="image/x-icon">
   <title>PIT</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
-  <link rel="shortcurt icon" href="img/logo.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 
-<body class="primeiro-body">
-  <nav class="LoginGeral">
-    <section class="LoginContainer3">
-      <p>Cadastro</p>
-      <div class="line"></div>
-      <form action="cadastroUsuario.php" method="POST">
-        <div class="ContainerInput">
-          <div class="InputBlock">
-          <input type="text" name="nome" oninput="formatarNome(this)" placeholder="Nome Completo">  
-          <input type="text" name="login" placeholder="Login">
-            <input type="password" name="senha" placeholder="Senha">
-            <input type="password" name="ConfirmaSenha" placeholder="Confirmar Senha">
+<body>
+  <div class="tela">
+    <div class="half-blue">
+      <!-- Conteúdo da metade azul -->
+      <div class="content">
+        <label class="text1">LampClinic</label>
+        <label class="text2">mais rápido Interface de fácil uso e eficiente.</label>
+        <button class="button"><a href="index.html">Ver Mais</a></button>
+      </div>
+
+    </div>
+    <div class="half-white">
+      <!-- Conteúdo da metade branca -->
+      <form action="cadastrousuario.php" method="POST">
+      <section class="right-content">  
+        <label class="text2">Digite seu Cadastro</label>
+        <div class="input">
+          <div class="placeholder">
+          <input class="text-wrapper" type="text" name="nome" oninput="formatarNome(this)" placeholder="Nome Completo">
+            <img class="codicon-input" src="img/Vector.png" />
           </div>
-          <select class="selectLogin">
+        </div>
+        <div class="input">
+          <div class="placeholder">
+          <input class="text-wrapper" type="text" name="login" placeholder="Login">
+            <img class="codicon-input" src="img/Vector-2.png" />
+          </div>
+        </div>
+        <div class="input">
+          <div class="placeholder">
+          <input class="text-wrapper" type="text" name="senha" placeholder="Senha">
+            <img class="codicon-input" src="img/Vector-2.png" />
+          </div>
+        </div>
+        <div class="input">
+          <div class="placeholder">
+          <input class="text-wrapper" type="text" name="ConfirmaSenha" placeholder="Confirmar Senha">
+            <img class="codicon-input" src="img/Vector-2.png" />
+          </div>
+        </div>
+        <div class="input">
+          <div class="placeholder">
+          <select class="text-wrapper" name="clinica">
             <option value="0">Clinica Lampada</option>
           </select>
+            <img class="codicon-input" src="img/Vector-1.png" />
+          </div>
         </div>
-        <p>Permitir</p>
-        <div class="line"></div>
-        <div class="ContainersPermissoes">
-          <div class="Permissoes">
-            <h4>Criar e editar Usuarios</h4>
-            <input type="radio" name="EditarUsuario" value="S">
-            <h5>Permitido</h5>
-            <input type="radio" name="EditarUsuario" value="N">
-            <h5>Nao Permitido</h5>
+        
+        <button name="confirmar" type="submit"  class="button2">Confirmar</button>
+        <button class="button2">Bloquear Usuario</button>
+        <button class="button2">Cancelar</button>
+        <label><a href="Logado.php" class="text3">Voltar ></a></label>
+</section>
+<section class="right-content2">  
+      <div class="input2">
+      <label class="text2">Criar e editar usuarios</label>
+          <div class="placeholder">
+          <input class="text-wrapper"  type="radio" name="EditarUsuario" value="S">
+            <label class="text5">SIM</label>
           </div>
-
-          <div class="Permissoes">
-            <h4>Criar e editar Fichas de Pacientes</h4>
-            <input type="radio" name="EditarFichas" value="S">
-            <h5>Permitido</h5>
-            <input type="radio" name="EditarFichas" value="N">
-            <h5>Nao Permitido</h5>
+          <div class="placeholder">
+          <input class="text-wrapper"  type="radio" name="EditarUsuario" value="N">
+            <label  class="text5">NAO</label>
           </div>
-          
-      </section>
-
-      <button name="confirmar" type="submit" class="PermissionBlock">Confirmar</button>
-      
-      <div class="BotoesBlock">
-        <button class="buttons">Bloquear Usuario</button>
-        <button class="buttons">Cancelar</button>
-      </div>
-      <a href="Logado.php" class="clickVoltar"><label>Voltar ></label>
+        </div>
+        <div class="input2">
+      <label class="text2">Criar e editar usuarios</label>
+          <div class="placeholder">
+          <input class="text-wrapper"  type="radio" name="EditarFichas" value="S">
+            <label class="text5">SIM</label>
+          </div>
+          <div class="placeholder">
+          <input class="text-wrapper" type="radio" name="EditarFichas" value="N">
+            <label  class="text5">NAO</label>
+          </div>
+        </div>
+        
+</section>
       </form>
-      <?php
-      if (isset($_POST['confirmar'])) {
-        $servername = "db4free.net";
-        $username = "userpit";
-        $password = "senhapit";
-        $database = "pitclinica";
-        $conn = new mysqli($servername, $username, $password, $database);
+     
+    </div>
+
+
+  </div>
+  </div>
+  </div>
+  <?php
+  if (isset($_POST['confirmar'])) {
+       
 
 
 
@@ -76,80 +122,28 @@
       $senha = $_POST["senha"];
       $confirmaSenha = $_POST["ConfirmaSenha"];
       if($senha == $confirmaSenha){
-      $sqlverifica = "Select login from usuario where login='" . $login . "'";
-      $result = mysqli_query($conn, $sqlverifica);
+        include_once "classes/sql.php";
+      $EditarUsuario = $_POST['EditarUsuario'];
+      $EditarFichas = $_POST['EditarFichas'];
 
-      
-      if (!$result) { die("Query Failed."); }
-      $row = $result->fetch_array(MYSQLI_ASSOC);
+      $conexao = new conexaosql();
 
-      if ($row == null)
-      {
-        $EditarUsuario = $_POST['EditarUsuario'];
-        $EditarFichas = $_POST['EditarFichas'];
-        if($EditarUsuario == "S" && $EditarFichas == "S"){
-          $permissoes = 3;
-        }
-        else if($EditarUsuario == "S"){
-          $permissoes = 1;
-        }
-        else if($EditarFichas == "S"){
-          $permissoes = 2;
-        }
-        else{
-          $permissoes = 0;
-        }
-      
-        $sqlenvia = "insert into usuario(nome, login, senha, Tipo_idTipo, permissoes) values('" . $nome . "','". $login . "','" . $senha ."',1," . $permissoes . ")";
-        if (mysqli_query($conn, $sqlenvia)) {
-          echo"<script>alert('Dados inseridos com sucesso!'); </script>";
-      } else {
-          echo "<script>alert('Erro: " . mysqli_error($conn) . "');' </script>";
-      }
+      $resultado = $conexao->cadastrarUsuario($nome, $login, $senha, $EditarUsuario, $EditarFichas);
 
-      mysqli_close($conn);
+      if($resultado == 1){
+      echo   "<script>alert('Dados inseridos com sucesso!'); </script>";
       }
       else{
-        echo "<script>alert('Login já existente!'); </script>";
+        echo "<script>alert('Login já existe ou erro no banco'); </script>";
       }
-      
+
       }else{
         echo "<script>alert('SENHA NÃO CONFERE!'); </script>";
     }}
       
       
       ?>
-      <section class="ContainerPermission">
-   
-
-
-    </section>
-    <article class="Registre">
-    </article>
-  </nav>
-
-
-
-
-
-
-  <script src="script.js"></script>
-  <script>function formatarNome(inputElement) {
-      inputElement.addEventListener('input', function() {
-        var inputValue = inputElement.value;
-        
-        // Remover caracteres não permitidos
-        inputValue = inputValue.replace(/[^A-Za-z ]/g, '');
-        
-        // Verificar se o primeiro caractere é uma letra
-        if (inputValue.length > 0 && !/^[A-Za-z]/.test(inputValue.charAt(0))) {
-          inputValue = inputValue.substring(1);
-        }
-        
-        // Atualizar o valor do campo de entrada com a máscara aplicada
-        inputElement.value = inputValue;
-      });
-    }</script>
+      <script src="scripts/script.js"></script>
 
 </body>
 
