@@ -1,4 +1,6 @@
-<?php $login = $_SESSION["loginG"];
+<?php 
+session_start();
+$login = $_SESSION["loginG"];
 if($login == null){
   header("Location: login.php");
 }?>
@@ -16,7 +18,7 @@ if($login == null){
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 
-<body>a
+<body>
   <div class="tela">
     <div class="half-blue">
       <!-- Conteúdo da metade azul -->

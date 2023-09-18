@@ -36,7 +36,7 @@
         </div>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper" type="text" name="senha" placeholder="Senha">
+          <input class="text-wrapper" type="password" name="senha" placeholder="Senha">
             <img class="codicon-input" src="img/Vector-2.png" />
           </div>
         </div>

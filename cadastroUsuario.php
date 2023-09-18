@@ -1,4 +1,6 @@
-<?php $login = $_SESSION["loginG"];
+<?php 
+session_start();
+$login = $_SESSION["loginG"];
 if($login == null){
   header("Location: login.php");
 }?>
@@ -46,13 +48,13 @@ if($login == null){
         </div>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper" type="text" name="senha" placeholder="Senha">
+          <input class="text-wrapper" type="password" name="senha" placeholder="Senha">
             <img class="codicon-input" src="img/Vector-2.png" />
           </div>
         </div>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper" type="text" name="ConfirmaSenha" placeholder="Confirmar Senha">
+          <input class="text-wrapper" type="password" name="ConfirmaSenha" placeholder="Confirmar Senha">
             <img class="codicon-input" src="img/Vector-2.png" />
           </div>
         </div>
