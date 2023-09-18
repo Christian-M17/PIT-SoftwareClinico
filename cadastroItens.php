@@ -1,9 +1,3 @@
-<?php
-session_start();
-$login = $_SESSION["loginG"];
-if($login == null){
-  header("Location: login.php");
-}?>
 <!DOCTYPE html>
 <html lang="en">
 

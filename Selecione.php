@@ -1,9 +1,3 @@
-<?php
-session_start();
-$login = $_SESSION["loginG"];
-if($login == null){
-  header("Location: login.php");
-}?>
 <!DOCTYPE html>
 <html>
 
@@ -38,7 +32,7 @@ if($login == null){
     <div class="card">
       <img src="img/agenda-icon.png">
       <div class="card__content">
-         <a href="agenda.html">
+         <a href="agenda.php">
         <p class="card__title">Agenda</p>
         
       </div>

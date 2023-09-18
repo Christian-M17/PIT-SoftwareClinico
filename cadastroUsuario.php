@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 $login = $_SESSION["loginG"];
 if($login == null){

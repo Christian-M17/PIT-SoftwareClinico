@@ -1,4 +1,5 @@
-<?php  session_start();
+<?php 
+session_start();
 $login = $_SESSION["loginG"];
 if($login == null){
   header("Location: login.php");
