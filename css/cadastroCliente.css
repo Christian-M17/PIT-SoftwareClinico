@@ -105,10 +105,7 @@
 }
 
 .button {
-
   padding: 0.5rem 1.875rem;
-  justify-content: center;
-  align-items: center;
   gap: 0.625rem;
   border-radius: 1.875rem;
   background: #1F7AFF;
@@ -121,20 +118,14 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  cursor: pointer;
-  transition: transform 0.3s ease; 
 }
 
-.button:hover {
-  transform: scale(1.1); 
-  transition: transform 0.3s ease; /
-}
-
-
-.button a {
+a{
   text-decoration: none;
-  color: white;
+    color: white;
 }
+
+
 
 .button2 {
   display: flex;
@@ -153,18 +144,20 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+
+  cursor: pointer;
 }
 
 .right-content {
   width: 26.3125rem;
-  height: 38rem;
+  height: 46rem;
   flex-shrink: 0;
   display: flex;
   gap: 20px;
   flex-direction: column;
   flex-wrap: nowrap;
+  align-items: flex-start;
   justify-content: space-between;
-  align-items: center;
 }
 
 .right-content .text1 {
@@ -212,17 +205,25 @@
 }
 
 .input .placeholder {
-  position: relative;
+  
   width: 133px;
   height: 24px;
   display: flex;
     align-items: center;
 }
 
+        .text-wrapper {
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid #333;
+            outline: none;
+            font-size: 16px;
+        }
+
 .input .text-wrapper {
   position: absolute;
   top: 2px;
-  left: 32px;
+  left: 5em;
 
   font-family: "Poppins-Regular", Helvetica;
   font-weight: 400;
@@ -235,48 +236,3 @@
 .codicon-input{
   height: 2vh;
 }
-
-.divform{
-  display: flex;
-    width: 64em;
-    height: 700vh;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.content1{
-
-  font-family: "Poppins-Regular", Helvetica;
-  font-weight: 600;
-  color: #333333;
-  font-size: 20px;
-  letter-spacing: 0;
-  display: flex;
-  line-height: normal;
-  flex-direction: column;
-  align-items: center;
-}
-
-.divform form{
-  display: flex;
-    padding: 4em;
-    gap: 1em;
-    width: 21em;
-    height: 22em;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.divform a{
-  font-family: "Poppins-Regular", Helvetica;
-    font-weight: 600;
-    color: #fff;
-    font-size: 16px;
-    letter-spacing: 0;
-    line-height: normal;
-    text-decoration: none;
-}
-

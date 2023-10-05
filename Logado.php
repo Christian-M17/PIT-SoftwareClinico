@@ -40,7 +40,7 @@ if($login == null){
 </div>
     <div class="divform">
       <form method="post" action="">
-        <button  class="button" type="submit" name="cadastroLogin">Cadastro de Login</button>
+        <button class="button" type="submit" name="cadastroLogin">Cadastro de Login</button>
         <button class="button" type="submit" name="cadastroCliente">Cadastro de Cliente</button>
         <button class="button"><a href="cadastroItens.php">Cadastro de Itens</a></button>
         <button class="button"><a href="cadastroProcedimento.php">Cadastro Procedimentos</a></button>

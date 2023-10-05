@@ -314,7 +314,7 @@ public function imprimirUsuarios($id){
                   </div>
                 </div>
                 <div class='procedure-record'>
-                  <button name='bloquear' type='submit' value=" . $id . ">Bloquear</button>
+                  <button class='input' name='bloquear' type='submit' value=" . $id . ">Bloquear</button>
                 </div>
                 
               </div>
@@ -360,7 +360,7 @@ public function imprimirItens($id){
                   $resultado = "
                   <form method='POST' action=''>
                   <div class='patient-info-container'>
-                <h2>Informações do Iten</h2>
+                <h2>Informações do Item</h2>
                 <div class='patient-profile'>
                   <div class='profile-picture2'>
                     <img src='img/lampada.jpg' alt='Profile Picture'>

@@ -32,7 +32,7 @@
     <div class="card">
       <img src="img/agenda-icon.png">
       <div class="card__content">
-         <a href="agenda.html">
+         <a href="agenda.php">
         <p class="card__title">Agenda</p>
         
       </div>
@@ -52,6 +52,15 @@
       <div class="card__content">
          <a href="usuarios.php">
         <p class="card__title">Usuarios</p>
+        
+      </div>
+      </a>
+    </div>
+    <div class="card">
+      <img src="img/usuario.png">
+      <div class="card__content">
+         <a href="itens.php">
+        <p class="card__title">Itens</p>
         
       </div>
       </a>
