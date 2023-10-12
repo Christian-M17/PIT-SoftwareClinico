@@ -43,7 +43,7 @@ if($login == null){
         <div class="input">
           <div class="placeholder">
           <input class="text-wrapper" type="text" name="login" placeholder="Login">
-            <img class="codicon-input" src="img/Vector-2.png" />
+            <img class="codicon-input" src="img/Vector.png" />
           </div>
         </div>
         <div class="input">
@@ -63,7 +63,7 @@ if($login == null){
           <select class="text-wrapper" name="clinica">
             <option value="0">Clinica Lampada</option>
           </select>
-            <img class="codicon-input" src="img/Vector-1.png" />
+            <img class="codicon-input" src="img/Vector-3.png" />
           </div>
         </div>
         
