@@ -42,13 +42,13 @@ if($login == null){
         <div class="input">
           <div class="placeholder">
           <input class="text-wrapper"type="text" name="tipo" placeholder="tipo">
-            <img class="codicon-input" src="img/Vector-2.png" />
+            <img class="codicon-input" src="img/Vector-3.png" />
           </div>
         </div>
         <div class="input">
           <div class="placeholder">
           <input class="text-wrapper"type="number" name="duracao" placeholder="duracao">
-            <img class="codicon-input" src="img/Vector-2.png" />
+            <img class="codicon-input" src="img/Vector-6.png" />
           </div>
         </div>
         <button type="submit" name="confirmar"  class="button2">Cadastrar</button>

@@ -37,13 +37,13 @@
         <div class="input">
           <div class="placeholder">
           <input class="text-wrapper"type="number" name="quantidade" placeholder="quantidade" >
-            <img class="codicon-input" src="img/Vector-2.png" />
+            <img class="codicon-input" src="img/Vector-4.png" />
           </div>
         </div>
         <div class="input">
           <div class="placeholder">
           <input class="text-wrapper" type="number" name="valor" placeholder="valor">
-            <img class="codicon-input" src="img/Vector-2.png" />
+            <img class="codicon-input" src="img/Vector-5.png" />
           </div>
         </div>
         <button type="submit" name="confirmar"  class="button2">Cadastrar</button>
