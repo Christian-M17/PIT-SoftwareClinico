@@ -209,20 +209,10 @@ a{
     align-items: center;
 }
 
-/*
-        .text-wrapper {
-            width: 100%;
-            border: none;
-            border-bottom: 2px solid #333;
-            outline: none;
-            font-size: 16px;
-        }
-*/
 .input .text-wrapper {
   position: absolute;
   top: 2px;
   left: 5em;
-
   font-family: "Poppins-Regular", Helvetica;
   font-weight: 400;
   color: #333333;
@@ -230,8 +220,23 @@ a{
   letter-spacing: 0;
   line-height: normal;
   border: none;
-  outline: none;
 }
+
+.text-wrapper {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #333;
+    outline: none;
+    font-size: 16px;
+ }
+
+        .text-wrapper {
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid #333;
+            outline: none;
+            font-size: 16px;
+        }
 
 
 .codicon-input{

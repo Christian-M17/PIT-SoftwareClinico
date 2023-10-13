@@ -112,7 +112,7 @@
   gap: 0.625rem;
   border-radius: 1.875rem;
   background: #1F7AFF;
-  width: 150px;
+  width: 12vw;
   height: 100px;
   border: none;
   color: #FFF;
@@ -156,7 +156,7 @@
 }
 
 .right-content {
-  width: 26.3125rem;
+  width: 40.3125rem;
   height: 38rem;
   flex-shrink: 0;
   display: flex;
@@ -261,22 +261,26 @@
 
 .divform form{
   display: flex;
-    padding: 4em;
-    gap: 1em;
-    width: 21em;
-    height: 22em;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
+  padding: 4em;
+  gap: 1em;
+  width: 30em;
+  height: 30em;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.divform{
+.divform a{
+  display: flex;
   font-family: "Poppins-Regular", Helvetica;
-    font-weight: 600;
-    color: #fff;
-    font-size: 16px;
-    letter-spacing: 0;
-    line-height: normal;
-    text-decoration: none;
+  font-weight: 600;
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
 }
 

@@ -1,124 +1,100 @@
+<?php 
+session_start();
+$login = $_SESSION["loginG"];
+if($login == null){
+  header("Location: login.php");
+}?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/cadastrocliente.css" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" href="img/logo1.ico" type="image/x-icon">
   <title>PIT</title>
-  <link href="css/cadastroCliente.css" rel="stylesheet" type="text/css" />
-  <link rel="shortcurt icon" href="img/logo.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 
-<body class="primeiro-body">
-  <nav class="LoginGeral">
-    <section class="LoginContainer2">
-      <p>Cadastro</p>
-      <div class="line"></div>
-      <form method="post" action="cadastroCliente.php">
-        <div class="ContainerInput">
-          <div class="InputBlock">
-            <input type="text" name="nome" oninput="formatarNome(this)" placeholder="Nome">
-            
-             <input type="text" id="cpfInput" name="cpf" placeholder="Cpf" maxlength="14" oninput="formatarCPF(this)">
+<body>
+  <div class="tela">
+    <div class="half-blue">
+      <!-- Conteúdo da metade azul -->
+      <div class="content">
+        <label class="text1">LampClinic</label>
+        <label class="text2">mais rápido Interface de fácil uso e eficiente.</label>
+        <button class="button"><a href="index.html">Ver Mais</a></button>
+      </div>
 
-            <select name="sexo" class="selectLogin">
-              <option value="0">Masculino</option>
-              <option  value="1">Feminino</option>
-              <option  value="2">Outro</option>
-            </select>
-            <!-- tem que trocar essa data para uma que não tenha como colocar que vc nasceu em 31/01/2050 -->
-            <input type="date" id="dataNascimentoInput" name="data" placeholder="Data de nascimento">
+    </div>
+    <div class="half-white">
+      <!-- Conteúdo da metade branca -->
+      <form class="right-content" action="validasenha.php" method="POST">
+        <label class="text1">BEM VINDO</label>
+        <label class="text2">Digite seu Cadastro</label>
+        <div class="input">
+          <div class="placeholder">
+          <input class="text-wrapper" type="text" name="nome" oninput="formatarNome(this)" placeholder="Nome">
+            <img class="codicon-input" src="img/Vector.png" />
           </div>
         </div>
-        <button type="submit" name="confirmar" class="PermissionBlock">Confirmar</button>
-      </form>
-      
-      <?php
+        <div class="input">
+          <div class="placeholder">
+          <input class="text-wrapper"type="text" name="cpf" placeholder="Cpf" maxlength="14" oninput="formatarCPF(this)">
+            <img class="codicon-input" src="img/cpf.png" />
+          </div>
+        </div>
+        <div class="input">
+          <div class="placeholder">
+          <select class="text-wrapper" name="sexo">
+          <option value="0">Masculino</option>
+              <option  value="1">Feminino</option>
+              <option  value="2">Outro</option>
+          </select>
+            <img class="codicon-input" src="img/cliente.png" />
+          </div>
+        </div>
+        <div class="input">
+          <div class="placeholder">
+          <input class="text-wrapper" type="date" name="data" placeholder="Data de nascimento">
+            <img class="codicon-input" src="img/date.png" />
+          </div>
+        </div>
+        <button type="submit" name="confirmar"  class="button2">Cadastrar</button>
+        <button name="enviar" type="submit"  class="button2">Cancelar</button>
+        <label> <a href="Logado.php" class="text3">Voltar ></a></label>
+</form>
+     
+    </div>
+
+
+  </div>
+  </div>
+  </div>
+  <?php
       if (isset($_POST['confirmar'])) {
-        $servername = "db4free.net";
-        $username = "userpit";
-        $password = "senhapit";
-        $database = "pitclinica";
-        $conn = new mysqli($servername, $username, $password, $database);
+        
 
       $nome = $_POST["nome"];
       $cpf = $_POST["cpf"];
       $date = $_POST["data"];
+      $sexo = $_POST["sexo"];
+      
+      include_once "classes/sql.php";
+      $conexao = new conexaosql();  
+      
+      echo $conexao->cadastrarClientes($nome, $cpf, $date, $sexo);}
 
       
       
       
-      $sqlverifica = "Select cpf from cliente where cpf='" . $cpf . "'";
-      $result = mysqli_query($conn, $sqlverifica);
-
-      
-      if (!$result) { die("Query Failed."); }
-      $row = $result->fetch_array(MYSQLI_ASSOC);
-
-      if ($row == null)
-      {
-        $sexo = $_POST["sexo"];
-        if($sexo == 0){
-          $sexoEnvia = 'M';
-        }
-        else if($sexo == 1){
-          $sexoEnvia = 'F';
-        }
-        else{
-          $sexoEnvia = 'O';
-        }
-        $dataFormatada = date('Y-m-d', strtotime($date));
-      
-        $sqlenvia = "insert into cliente(nome, cpf, dataNascimento, sexo) values('" . $nome . "','". $cpf . "','" . $dataFormatada . "','" . $sexoEnvia . "')";
-        if (mysqli_query($conn, $sqlenvia)) {
-          echo "<script>alert('Dados inseridos com sucesso!'); </script>";
-      } else {
-          echo "<script>alert('Erro: " . mysqli_error($conn) . "');' </script>";
-      }
-
-      mysqli_close($conn);
-      }
-      else{
-        echo "<script>alert('CPF já existente!'); </script>";
-      }
-      
-     }
     
       
       
       ?>
-      <div class="BotoesBlock">
-
-        <button class="buttons">Cancelar</button>
-      </div>
-      <a href="Logado.php" class="clickVoltar"><label>Voltar ></label>
-    </section>
-
-  </nav>
-
-
-
-
-
-
-  <script src="script.js"></script>
-
-  <script>function formatarNome(inputElement) {
-      inputElement.addEventListener('input', function() {
-        var inputValue = inputElement.value;
-        
-        // Remover caracteres não permitidos
-        inputValue = inputValue.replace(/[^A-Za-z ]/g, '');
-        
-        // Verificar se o primeiro caractere é uma letra
-        if (inputValue.length > 0 && !/^[A-Za-z]/.test(inputValue.charAt(0))) {
-          inputValue = inputValue.substring(1);
-        }
-        
-        // Atualizar o valor do campo de entrada com a máscara aplicada
-        inputElement.value = inputValue;
-      });
-    }</script>
+      <script src="script.js"></script>
 </body>
 
 </html>

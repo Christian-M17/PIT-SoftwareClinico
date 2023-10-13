@@ -10,7 +10,7 @@
 <body class="body-parte2">
   <header>
     <div class="logo">
-      <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+      <a href="logado.php"><img src="img/logo.png" alt="Logo"></a>
     </div>
     <div class="profile">
 
@@ -34,7 +34,7 @@ if (isset($_POST['bloquear'])) {
   $valor = $_POST['bloquear'];
   echo $conexao->bloquear($valor);}
 ?>
- 
+   ?>
   </main>
 </body>
 
