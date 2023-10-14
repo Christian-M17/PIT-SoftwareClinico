@@ -85,7 +85,7 @@ if($login == null){
           </div>
         </div>
         <div class="input2">
-      <label class="text2">Criar e editar usuarios</label>
+      <label class="text2">Criar e editar clientes</label>
           <div class="placeholder">
           <input class="text-wrapper"  type="radio" name="EditarFichas" value="S">
             <label class="text5">SIM</label>

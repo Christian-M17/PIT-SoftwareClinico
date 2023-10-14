@@ -13,12 +13,8 @@
       <a href="logado.php"><img src="img/logo.png" alt="Logo"></a>
     </div>
     <div class="profile">
-      <div class="profile-picture">
-        <a href="Selecione.html">
-          <img src="img/profile.jpg" alt="Profile Picture">
-      </div>
-      <div class="profile-name">aaaaa</div>
-      </a>
+     
+       
     </div>
   </header>
   <main>

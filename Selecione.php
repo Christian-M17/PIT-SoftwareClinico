@@ -57,7 +57,7 @@
       </a>
     </div>
     <div class="card">
-      <img src="img/usuario.png">
+      <img src="img/Vector-4.png">
       <div class="card__content">
          <a href="itens.php">
         <p class="card__title">Itens</p>

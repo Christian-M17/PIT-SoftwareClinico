@@ -34,7 +34,7 @@ if (isset($_POST['bloquear'])) {
   $valor = $_POST['bloquear'];
   echo $conexao->bloquear($valor);}
 ?>
-   ?>
+ 
   </main>
 </body>
 
