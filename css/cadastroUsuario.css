@@ -148,14 +148,14 @@ a{
 
 .right-content {
   width: 26.3125rem;
-  height: 47rem;
-  flex-shrink: 0;
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  justify-content: space-between;
+    height: 38rem;
+    flex-shrink: 0;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .right-content .text1 {
