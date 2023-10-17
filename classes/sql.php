@@ -12,7 +12,6 @@ class conexaosql {
       $database = "pitclinica";
       $this->conn = new mysqli($servername, $username, $password, $database);
   }
-}
 
 public function fazendologin($login_verifica, $senha_verifica) {
       $sql = "SELECT senha FROM usuario WHERE login='" . $login_verifica . "'";
@@ -36,7 +35,7 @@ public function fazendologin($login_verifica, $senha_verifica) {
           }
           mysqli_close($this->conn);
       }
-    }
+  }
 public function recuperarSenha($login, $nome){
   $sql = "Select nome, senha from usuario where login='" . $login . "'";
   $result = mysqli_query($this->conn, $sql);
@@ -283,9 +282,8 @@ public function anotar($id, $anotar){
         mysqli_close($this->conn);
         }
             }
-public function imprimirUsuarios($id){
-
-              $sql = "SELECT nome, Login, Tipo_idTipo, permissoes  FROM usuario WHERE idUsuario='" . $id . "'";
+            public function imprimirUsuarios($id) {
+              $sql = "SELECT nome, Login, Tipo_idTipo, permissoes FROM usuario WHERE idUsuario='" . $id . "'";
               $result = mysqli_query($this->conn, $sql);
             
               if (!$result) {
@@ -293,7 +291,6 @@ public function imprimirUsuarios($id){
               } else {
                 $row = $result->fetch_array(MYSQLI_ASSOC);
             
-                
                 if ($row != null) {
                   $nome = $row["nome"];
                   $login = $row["Login"];
@@ -302,29 +299,29 @@ public function imprimirUsuarios($id){
                   $resultado = "
                   <form method='POST' action=''>
                   <div class='patient-info-container'>
-                <h2>Informações do Usuario</h2>
-                <div class='patient-profile'>
-                  <div class='profile-picture2'>
-                    <img src='img/lampada.jpg' alt='Profile Picture'>
+                    <h2>Informações do Usuario</h2>
+                    <div class='patient-profile'>
+                      <div class='profile-picture2'>
+                        <img src='img/lampada.jpg' alt='Profile Picture'>
+                      </div>
+                      <div class='profile-details'>
+                        <h3>" . $nome . "</h3>
+                        <p>Login: " . $login . "</p>
+                        <p>Tipo: " . $tipo . "</p>
+                        <p> Permissoes: " . $permissoes . "</p>
+                      </div>
+                    </div>
+                    <div class='procedure-record'>
+                      <button class='input' name='bloquear' type='submit' value=" . $id . " >Bloquear</button>
+                      <button class='input' name='editar' type='submit' value=" . $id . " >Editar</button>
+                    </div>
                   </div>
-                  <div class='profile-details'>
-                    <h3>" . $nome . "</h3>
-                    <p>Login: ". $login . "</p>
-                    <p>Tipo: ". $tipo . "</p>
-                    <p> Permissoes: ". $permissoes . "</p>
-                  </div>
-                </div>
-                <div class='procedure-record'>
-                  <button class='input' name='bloquear' type='submit' value=" . $id . " >Bloquear</button>
-                  <button class='input' name='editar' type='submit' value=" . $id . " >Editar</button>
-                </div>
-                
-              </div>
-              </form>
-                ";
-                return $resultado;
+                  </form>
+                  ";
+                  return $resultado;
+                } else {
+                  return "fim"; // Indicar o fim dos registros.
                 }
-                
               }
             }
 public function bloquear($id){
@@ -343,7 +340,9 @@ public function bloquear($id){
         mysqli_close($this->conn);
         }
             }
-public function imprimirItens($id){
+      
+
+            public function imprimirItens($id){
 
               $sql = "SELECT nome, qntd, valor FROM Itens WHERE id='" . $id . "'";
               $result = mysqli_query($this->conn, $sql);
@@ -383,33 +382,40 @@ public function imprimirItens($id){
                 }
                 
               }
-            
-  }
-  public function getUsuario($id, $categoria){
-    $sql = "SELECT nome, Login, Tipo_idTipo, senha, permissoes  FROM usuario WHERE idUsuario='" . $id . "'";
-    $result = mysqli_query($this->conn, $sql);
-    if($categoria == "nome"){
-      $retorno = $row["nome"];
-      return $retorno;
+            }
+            public function getUsuario($id, $categoria){
+              $sql = "SELECT nome, Login, Tipo_idTipo, senha, permissoes  FROM usuario WHERE idUsuario='" . $id . "'";
+              $result = mysqli_query($this->conn, $sql);
+              if (!$result) {
+                die("Query Failed.");
+              } else {
+                $row = $result->fetch_array(MYSQLI_ASSOC);
+              if($categoria == "nome"){
+                $retorno = $row["nome"];
+                return $retorno;
 
-    }
-    if($categoria == "Login"){
-      $retorno = $row["Login"];
-      return $retorno;
+              }
+              if($categoria == "Login"){
+                $retorno = $row["Login"];
+                return $retorno;
 
-    }
-    if($categoria == "permissoes"){
-      $retorno = $row["permissoes"];
-      return $retorno;
+              }
+              if($categoria == "permissoes"){
+                $retorno = $row["permissoes"];
+                return $retorno;
 
-    }
-    if($categoria == "senha"){
-      $retorno = $row["senha"];
-      return $retorno;
+              }
+              if($categoria == "senha"){
+                $retorno = $row["senha"];
+                return $retorno;
 
-    }
-  }
+              }
+            }}
+                  }
+
   
+
+ 
   
   
     

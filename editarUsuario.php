@@ -1,8 +1,11 @@
 <?php 
 session_start();
 $login = $_SESSION["loginG"];
+
 if($login == null){
   header("Location: login.php");
+  
+
 }
 include_once "classes/sql.php";
 $conexao = new conexaosql();
@@ -40,25 +43,25 @@ $idLogin = $_SESSION["idUsuario"]
         <label class="text2">Edite o Usuario</label>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper" type="text" name="id" placeholder="Id" value=<?php echo $idLogin?>>
+          <input class="text-wrapper" type="text" name="id" placeholder="Id" value=<?php echo $idLogin ?>>
             <img class="codicon-input" src="img/Vector-2.png" />
           </div>
         </div>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper" type="text" name="nome" oninput="formatarNome(this)" placeholder="Nome Completo" value=<?php echo $conexao->getUsuario($idLogin, "nome")?>>
+          <input class="text-wrapper" type="text" name="nome" oninput="formatarNome(this)" placeholder="Nome Completo" value= '<?php echo $conexao->getUsuario($idLogin, "nome")?>'>
             <img class="codicon-input" src="img/Vector.png" />
           </div>
         </div>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper" type="text" name="login" placeholder="Login" <?php echo $conexao->getUsuario($idLogin, "Login")?>>
+          <input class="text-wrapper" type="text" name="login" placeholder="Login" value= '<?php echo $conexao->getUsuario($idLogin, "Login") ?>''>
             <img class="codicon-input" src="img/Vector.png" />
           </div>
         </div>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper" type="text" name="senha" placeholder="Senha" <?php echo $conexao->getUsuario($idLogin, "senha")?>>
+          <input class="text-wrapper" type="text" name="senha" placeholder="Senha" value= '<?php echo $conexao->getUsuario($idLogin, "senha") ?>'>
             <img class="codicon-input" src="img/Vector-2.png" />
           </div>
         </div>
