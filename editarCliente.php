@@ -3,7 +3,10 @@ session_start();
 $login = $_SESSION["loginG"];
 if($login == null){
   header("Location: login.php");
-}?>
+  
+}
+include_once "classes/sql.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
