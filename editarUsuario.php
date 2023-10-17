@@ -43,7 +43,7 @@ $idLogin = $_SESSION["idUsuario"]
         <label class="text2">Edite o Usuario</label>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper" type="text" name="id" placeholder="Id" value=<?php echo $idLogin ?>>
+          <input class="text-wrapper" type="text" name="id" placeholder="Id" value=<?php echo $idLogin ?>  readonly>
             <img class="codicon-input" src="img/Vector-2.png" />
           </div>
         </div>
