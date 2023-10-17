@@ -33,13 +33,12 @@ while ($counter <= 10) {
 if (isset($_POST['bloquear'])) {
   $valor = $_POST['bloquear'];
   echo $conexao->bloquear($valor);}
-if (isset($_POST['editar'])) {
+  if (isset($_POST['editar'])) {
     $valor = $_POST['editar'];
     $_SESSION["idUsuario"] = $valor;
     header("Location: editarUsuario.php");
-
+  }
   ?>
-
 
  
   </main>

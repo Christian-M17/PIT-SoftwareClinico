@@ -342,9 +342,6 @@ public function bloquear($id){
         mysqli_close($this->conn);
         }
             }
-      
-
-                  }
 public function imprimirItens($id){
 
               $sql = "SELECT nome, qntd, valor FROM Itens WHERE id='" . $id . "'";
@@ -385,34 +382,33 @@ public function imprimirItens($id){
                 }
                 
               }
-            }
-            public function getUsuario($id, $categoria){
-              $sql = "SELECT nome, Login, Tipo_idTipo, senha, permissoes  FROM usuario WHERE idUsuario='" . $id . "'";
-              $result = mysqli_query($this->conn, $sql);
-              if($categoria == "nome"){
-                $retorno = $row["nome"];
-                return $retorno;
+            
+  }
+  public function getUsuario($id, $categoria){
+    $sql = "SELECT nome, Login, Tipo_idTipo, senha, permissoes  FROM usuario WHERE idUsuario='" . $id . "'";
+    $result = mysqli_query($this->conn, $sql);
+    if($categoria == "nome"){
+      $retorno = $row["nome"];
+      return $retorno;
 
-              }
-              if($categoria == "Login"){
-                $retorno = $row["Login"];
-                return $retorno;
+    }
+    if($categoria == "Login"){
+      $retorno = $row["Login"];
+      return $retorno;
 
-              }
-              if($categoria == "permissoes"){
-                $retorno = $row["permissoes"];
-                return $retorno;
+    }
+    if($categoria == "permissoes"){
+      $retorno = $row["permissoes"];
+      return $retorno;
 
-              }
-              if($categoria == "senha"){
-                $retorno = $row["senha"];
-                return $retorno;
+    }
+    if($categoria == "senha"){
+      $retorno = $row["senha"];
+      return $retorno;
 
-              }
-            }
+    }
+  }
   
-
- 
   
   
     
