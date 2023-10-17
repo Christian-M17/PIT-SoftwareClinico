@@ -65,6 +65,15 @@
       </div>
       </a>
     </div>
+    <div class="card">
+      <img src="img/procedimento.png">
+      <div class="card__content">
+         <a href="procedimentos.php">
+        <p class="card__title">Procedimentos</p>
+        
+      </div>
+      </a>
+    </div>
 
   </main>
 </body>

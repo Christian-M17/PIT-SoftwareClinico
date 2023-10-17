@@ -12,6 +12,7 @@ class conexaosql {
       $database = "pitclinica";
       $this->conn = new mysqli($servername, $username, $password, $database);
   }
+}
 
 public function fazendologin($login_verifica, $senha_verifica) {
       $sql = "SELECT senha FROM usuario WHERE login='" . $login_verifica . "'";
@@ -35,7 +36,7 @@ public function fazendologin($login_verifica, $senha_verifica) {
           }
           mysqli_close($this->conn);
       }
-  }
+    }
 public function recuperarSenha($login, $nome){
   $sql = "Select nome, senha from usuario where login='" . $login . "'";
   $result = mysqli_query($this->conn, $sql);
