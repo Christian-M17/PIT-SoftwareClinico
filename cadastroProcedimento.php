@@ -1,15 +1,15 @@
 <?php session_start();
 $login = $_SESSION["loginG"];
-if($login == null){
+if ($login == null) {
   header("Location: login.php");
-}?>
+} ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="css/cadastrocliente.css" rel="stylesheet" type="text/css" />
+  <link href="css/cadastroProcedimento.css" rel="stylesheet" type="text/css" />
   <link rel="shortcut icon" href="img/logo1.ico" type="image/x-icon">
   <title>PIT</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,46 +35,68 @@ if($login == null){
         <label class="text2">Digite seu Cadastro</label>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper" type="text" name="nome" oninput="formatarNome(this)" placeholder="Nome">
+            <input class="text-wrapper" type="text" name="nome" oninput="formatarNome(this)" placeholder="Nome">
             <img class="codicon-input" src="img/Vector.png" />
           </div>
         </div>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper"type="text" name="tipo" placeholder="tipo">
+            <input class="text-wrapper" type="text" name="tipo" placeholder="tipo">
             <img class="codicon-input" src="img/Vector-3.png" />
           </div>
         </div>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper"type="number" name="duracao" placeholder="duracao">
+            <input class="text-wrapper" type="number" name="duracao" placeholder="duracao">
             <img class="codicon-input" src="img/Vector-6.png" />
           </div>
         </div>
-        <button type="submit" name="confirmar"  class="button2">Cadastrar</button>
-        <button name="enviar" type="submit"  class="button2">Cancelar</button>
+        <button type="submit" name="confirmar" class="button2">Cadastrar</button>
+        <button name="enviar" type="submit" class="button2">Cancelar</button>
         <label> <a href="Logado.php" class="text3">Voltar ></a></label>
-</form>
-<?php 
+      </form>
+      <section class="right-content2">
+        <div class="input3">
+          <label class="text2">Adicionar Item</label>
+          <div class="input4">
+            <div class="placeholder">
+              <select class="text-wrapper" name="clinica">
+                <option value="0"> <!-- Escreve ai --></option>
+              </select>
+              <img class="codicon-input" src="img/Vector-4.png" />
+            </div>
+          </div>
+          <div class="input4">
+            <div class="placeholder">
+              <input class="text-wrapper" type="number" name="quantidade" placeholder="quantidade">
+              <img class="codicon-input" src="img/Vector-5.png" />
+            </div>
+          </div>
+          
+          <button type="submit" name="confirmar" class="button2">Adicionar Item</button>
+        </div>
+      </section>
+      <?php
 
-if (isset($_POST['confirmar'])) {
-     $nome = $_POST["nome"];
-     $tipo= $_POST["tipo"];
-     $duracao = $_POST["duracao"];
-     include_once "classes/sql.php";
-     $conexao = new conexaosql();  
-     
-     echo $conexao->cadastrarProcedimento($nome, $tipo, $duracao);}
+      if (isset($_POST['confirmar'])) {
+        $nome = $_POST["nome"];
+        $tipo = $_POST["tipo"];
+        $duracao = $_POST["duracao"];
+        include_once "classes/sql.php";
+        $conexao = new conexaosql();
 
-    
+        echo $conexao->cadastrarProcedimento($nome, $tipo, $duracao);
+      }
 
-     ?>
+
+
+      ?>
     </div>
   </div>
   </div>
   </div>
 
-      <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>

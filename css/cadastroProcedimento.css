@@ -336,3 +336,63 @@ form{
     letter-spacing: 0;
     line-height: normal;
   }
+
+
+.input3{
+  display: flex;
+    flex-direction: column;
+    height: 20em;
+    margin-top: 10px;
+    align-items: flex-start;
+    gap: 28px;
+    padding: 18px 26px;
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 30px;
+    border: 1px solid;
+    border-color: #333333;
+    justify-content: space-between;
+}
+
+.input4{
+    display: flex;
+    flex-direction: column;
+    width: 15em;
+    height: 5em;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 18px 26px;
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 30px;
+    border: 1px solid;
+    border-color: #333333;
+    justify-content: center;
+}
+
+
+.input4 .placeholder {
+    width: 133px;
+    height: 24px;
+    display: flex;
+      align-items: center;
+  }
+  
+  .input4 .text-wrapper {
+    position: absolute;
+    top: 2px;
+    left: 5em;
+    font-family: "Poppins-Regular", Helvetica;
+    font-weight: 400;
+    color: #333333;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+    border: none;
+  }
+
+
+  .input3 .button2{
+    height: 10em;
+  }
+  

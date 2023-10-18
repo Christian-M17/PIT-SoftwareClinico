@@ -30,6 +30,13 @@
                     <button type="submit">Enviar</button>
                 </div>
                 <div class="divselect">
+                <label for="data">Clientes :</label>
+                    <select class="select" name="usuario">
+                        <option value="0"><!-- Edita aqui --></option>
+                    </select>
+                    <button type="submit">Enviar</button>
+                </div>
+                <div class="divselect">
                     <label for="data">Procedimento:</label>
                     <select class="select" name="usuario">
                         <option value="0"><!-- Edita aqui --></option>
@@ -41,6 +48,7 @@
                     <input type="date" name="data" class="data">
                     <button type="submit">Enviar</button>
                 </div>
+               
            
             </form>
         </div>
