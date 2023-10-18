@@ -256,6 +256,7 @@ public function imprimirClientes($id){
         <h4>Adicionar Anotações:</h4>
         <textarea name='texto" . $id . "' rows='4' cols='50'>" . $anotacao . "</textarea>
         <button class='input' name='editar' type='submit' value=" . $id . ">Salvar Anotações</button>
+        <button class='input' name='editarCliente' type='submit' value=" . $id . " >Editar</button>
       </div>
       </div>
       </form>
@@ -411,7 +412,36 @@ public function bloquear($id){
 
               }
             }}
-                  }
+            public function getCliente($id, $categoria){
+              $sql = "SELECT nome, dataNascimento, cpf, anotacao  FROM cliente WHERE id='" . $id . "'";
+              $result = mysqli_query($this->conn, $sql);
+              if (!$result) {
+                die("Query Failed.");
+              } else {
+                $row = $result->fetch_array(MYSQLI_ASSOC);
+                if($categoria == "nome"){
+                  $retorno = $row["nome"];
+                  return $retorno;}
+                if($categoria == "data"){
+                $retorno = $row["dataNascimento"];
+                return $retorno;
+
+              }
+              if($categoria == "cpf"){
+                $retorno = $row["cpf"];
+                return $retorno;
+
+              }
+              if($categoria == "anotacao"){
+                $retorno = $row["anotacao"];
+                return $retorno;
+
+              }
+              
+
+              }
+            }}
+                  
 
   
 

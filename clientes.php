@@ -33,6 +33,12 @@ $counter = 1;
 include_once "classes/sql.php";
 $conexao = new conexaosql();  
 
+if (isset($_POST['editarCliente'])) {
+  $valor = $_POST['editarCliente'];
+  $_SESSION["idCliente"] = $valor;
+  header("Location: editarCliente.php");}
+
+
 if (isset($_POST['Pesquisa'])) {
   $idpesquisa = $_POST['numero'];
   echo $conexao->imprimirClientes($idpesquisa);

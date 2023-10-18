@@ -3,11 +3,12 @@ session_start();
 $login = $_SESSION["loginG"];
 if($login == null){
   header("Location: login.php");
+  
 }
 include_once "classes/sql.php";
+$conexao = new conexaosql();
+$idCliente = $_SESSION["idCliente"]
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,19 +41,19 @@ include_once "classes/sql.php";
         <label class="text2">Escolha as opçoes para editar o perfil de cliente</label>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper" type="text" name="id" placeholder="Id">
+          <input class="text-wrapper" type="text" name="id" value='<?php echo $idCliente ?>' placeholder="Id">
             <img class="codicon-input" src="img/Vector-2.png" />
           </div>
         </div>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper" type="text" name="nome" oninput="formatarNome(this)" placeholder="Nome">
+          <input class="text-wrapper" type="text" name="nome" oninput="formatarNome(this)" placeholder="Nome" value= '<?php echo $conexao->getCliente($idCliente, "nome") ?>'>
             <img class="codicon-input" src="img/Vector.png" />
           </div>
         </div>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper"type="text" name="cpf" placeholder="Cpf" maxlength="14" oninput="formatarCPF(this)">
+          <input class="text-wrapper"type="text" name="cpf" placeholder="Cpf" maxlength="14" value= '<?php echo $conexao->getCliente($idCliente, "cpf") ?>' oninput="formatarCPF(this)">
             <img class="codicon-input" src="img/cpf.png" />
           </div>
         </div>
@@ -68,7 +69,7 @@ include_once "classes/sql.php";
         </div>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper" type="date" name="data" placeholder="Data de nascimento">
+          <input class="text-wrapper" type="date" name="data" value= '<?php echo $conexao->getCliente($idCliente, "data") ?>' placeholder="Data de nascimento">
             <img class="codicon-input" src="img/date.png" />
           </div>
         </div>
