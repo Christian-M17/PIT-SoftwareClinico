@@ -440,7 +440,73 @@ public function bloquear($id){
               
 
               }
-            }}
+            }
+          
+            public function editarUsuario($id, $nome, $login, $senha){
+              $sql ="Select login from usuario where idUsuario='" . $id . "'";
+              $result = mysqli_query($this->conn, $sql);
+          
+              
+              if (!$result) { die("Query Failed."); }
+              $row = $result->fetch_array(MYSQLI_ASSOC);
+          
+              if ($row == null)
+              {
+                
+                return 2;
+                }
+              else{
+                $sqlenvia = "update usuario set nome= '" . $nome . "', login =' ". $login . "', senha='" . $senha . "' where idUsuario= " . $id;
+                if (mysqli_query($this->conn, $sqlenvia)) {
+                  return 1;
+              } else {
+                  return 2;
+              }
+            }
+              mysqli_close($this->conn);
+              
+            }
+              
+             
+              public function editarClientes($id, $nome, $cpf, $date, $sexo){
+    
+
+                $sql = "Select cpf from cliente where cpf='" . $cpf . "'";
+                $result = mysqli_query($this->conn, $sql);
+            
+                if (!$result) { die("Query Failed."); }
+                $row = $result->fetch_array(MYSQLI_ASSOC);
+            
+                if ($row == null)
+                { 
+                
+                  $sql = "Select cpf from cliente where cpf='" . $cpf . "'";
+                  if($sexo == 0){
+                    $sexoEnvia = 'M';
+                  }
+                  else if($sexo == 1){
+                    $sexoEnvia = 'F';
+                  }
+                  else{
+                    $sexoEnvia = 'O';
+                  }
+                  $dataFormatada = date('Y-m-d', strtotime($date));
+                
+                  $sqlenvia = "update cliente set nome= '" . $nome . "', cpf= '". $cpf . "', dataNascimento= '" . $dataFormatada . "', sexo='" . $sexoEnvia . "' where id= '" . $id . "'";
+                  if (mysqli_query($this->conn, $sqlenvia)) {
+                    return "<script>alert('Dados inseridos com sucesso!'); </script>";
+                }
+              else{return "<script>alert('Erro!'); </script>";}
+              }
+            
+                mysqli_close($this->conn);}
+                
+                
+                
+               }
+            
+          
+          
                   
 
   

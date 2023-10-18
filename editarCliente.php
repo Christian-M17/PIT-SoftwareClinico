@@ -1,7 +1,7 @@
 <?php 
 session_start();
-$login = $_SESSION["loginG"];
-if($login == null){
+$loginG = $_SESSION["loginG"];
+if($loginG == null){
   header("Location: login.php");
   
 }
@@ -36,7 +36,7 @@ $idCliente = $_SESSION["idCliente"]
     </div>
     <div class="half-white">
       <!-- Conteúdo da metade branca -->
-      <form class="right-content" action="validasenha.php" method="POST">
+      <form class="right-content" action="editarCliente.php" method="POST">
         <label class="text1">BEM VINDO</label>
         <label class="text2">Escolha as opçoes para editar o perfil de cliente</label>
         <div class="input">
@@ -74,10 +74,37 @@ $idCliente = $_SESSION["idCliente"]
           </div>
         </div>
         <button type="submit" name="confirmar"  class="button2">Editar</button>
-        <button name="enviar" type="submit"  class="button2">Cancelar</button>
-        <label> <a href="Logado.php" class="text3">Voltar ></a></label>
+        <label> <a href="clientes.php" class="text3">Voltar ></a></label>
 </form>
-     
+<?php 
+     if (isset($_POST['confirmar'])) {
+       
+
+
+
+
+
+
+
+
+      $nome = $_POST["nome"];
+      $cpf = $_POST["cpf"];
+      $sexo = $_POST["sexo"];
+      $data = $_POST["data"];
+      $per = $conexao->PegarPermissoes($loginG);
+
+      if ($per == 2 || $per == 3) {
+      $resultado = $conexao->editarClientes($idCliente, $nome, $cpf, $data, $sexo );
+
+      echo $resultado;
+      
+    }
+  }
+      
+    
+
+
+     ?>
     </div>
 
 

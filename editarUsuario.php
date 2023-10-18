@@ -1,8 +1,8 @@
 <?php 
 session_start();
-$login = $_SESSION["loginG"];
+$loginG = $_SESSION["loginG"];
 
-if($login == null){
+if($loginG == null){
   header("Location: login.php");
   
 
@@ -38,7 +38,7 @@ $idLogin = $_SESSION["idUsuario"]
     </div>
     <div class="half-white">
       <!-- Conteúdo da metade branca -->
-      <form action="cadastrousuario.php" method="POST">
+      <form action="editarUsuario.php" method="POST">
       <section class="right-content">  
         <label class="text2">Edite o Usuario</label>
         <div class="input">
@@ -75,11 +75,42 @@ $idLogin = $_SESSION["idUsuario"]
         </div>
         
         <button name="confirmar" type="submit"  class="button2">Confirmar</button>
-        <button class="button2">Cancelar</button>
-        <label><a href="Logado.php" class="text3">Voltar ></a></label>
+        <label><a href="usuarios.php" class="text3">Voltar ></a></label>
 </section>
       </form>
-     
+     <?php 
+     if (isset($_POST['confirmar'])) {
+       
+
+
+
+
+
+
+
+
+      $nome = $_POST["nome"];
+      $login = $_POST["login"];
+      $senha = $_POST["senha"];
+      $per = $conexao->PegarPermissoes($loginG);
+
+      if ($per == 1 || $per == 3) {
+      $resultado = $conexao->editarUsuario($idLogin, $nome, $login, $senha, );
+
+      if($resultado == 1){
+      echo   "<script>alert('Dados inseridos com sucesso!'); </script>";
+      }
+      else{
+        echo "<script>alert('Login já existe ou erro no banco'); </script>";
+      }
+      
+    }
+  }
+      
+    
+
+
+     ?>
     </div>
 
 
