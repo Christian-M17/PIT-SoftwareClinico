@@ -23,8 +23,8 @@
     <div class="card">
       <img src="img/paciente-icon.png">
       <div class="card__content">
-        <a href="calendario.php">
-        <p class="card__title">Calendario</p>
+        <a href="procedimentos.php">
+        <p class="card__title">Agendar</p>
         
       </div>
       </a>
@@ -32,8 +32,8 @@
     <div class="card">
       <img src="img/agenda-icon.png">
       <div class="card__content">
-         <a href="agenda.php">
-        <p class="card__title">Agenda</p>
+         <a href="agendamentos.php">
+        <p class="card__title">Agendamentos</p>
         
       </div>
       </a>
@@ -68,8 +68,8 @@
     <div class="card">
       <img src="img/procedimento.png">
       <div class="card__content">
-         <a href="procedimentos.php">
-        <p class="card__title">Procedimentos</p>
+         <a href="https://forms.gle/97wpX5KhQYgSBAXt6">
+        <p class="card__title">Anamnese</p>
         
       </div>
       </a>
