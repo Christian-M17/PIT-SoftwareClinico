@@ -54,7 +54,7 @@ if ($login == null) {
         <button type="submit" name="confirmar" class="button2">Cadastrar</button>
         <button name="enviar" type="submit" class="button2">Cancelar</button>
         <label> <a href="Logado.php" class="text3">Voltar ></a></label>
-      </form>
+      
       <section class="right-content2">
         <div class="input3">
           <label class="text2">Adicionar Item</label>
@@ -95,7 +95,7 @@ if ($login == null) {
   </div>
   </div>
   </div>
-
+</form>
   <script src="script.js"></script>
 </body>
 
