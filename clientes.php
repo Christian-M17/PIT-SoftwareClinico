@@ -16,7 +16,7 @@ if($login == null){
 <body class="body-parte2">
   <header>
     <div class="logo">
-      <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+      <a href="logado.php"><img src="img/logo.png" alt="Logo"></a>
     </div>
     <div class="profile">
     </div>
@@ -32,6 +32,12 @@ $counter = 1;
 
 include_once "classes/sql.php";
 $conexao = new conexaosql();  
+
+if (isset($_POST['editarCliente'])) {
+  $valor = $_POST['editarCliente'];
+  $_SESSION["idCliente"] = $valor;
+  header("Location: editarCliente.php");}
+
 
 if (isset($_POST['Pesquisa'])) {
   $idpesquisa = $_POST['numero'];

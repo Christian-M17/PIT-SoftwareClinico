@@ -1,9 +1,16 @@
 <?php 
 session_start();
-$login = $_SESSION["loginG"];
-if($login == null){
+$loginG = $_SESSION["loginG"];
+
+if($loginG == null){
   header("Location: login.php");
-}?>
+  
+
+}
+include_once "classes/sql.php";
+$conexao = new conexaosql();
+$idLogin = $_SESSION["idUsuario"]
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,30 +38,30 @@ if($login == null){
     </div>
     <div class="half-white">
       <!-- Conteúdo da metade branca -->
-      <form action="cadastrousuario.php" method="POST">
+      <form action="editarUsuario.php" method="POST">
       <section class="right-content">  
-        <label class="text2">Digite seu Cadastro</label>
+        <label class="text2">Edite o Usuario</label>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper" type="text" name="nome" oninput="formatarNome(this)" placeholder="Nome Completo">
-            <img class="codicon-input" src="img/Vector.png" />
-          </div>
-        </div>
-        <div class="input">
-          <div class="placeholder">
-          <input class="text-wrapper" type="text" name="login" placeholder="Login">
-            <img class="codicon-input" src="img/Vector.png" />
-          </div>
-        </div>
-        <div class="input">
-          <div class="placeholder">
-          <input class="text-wrapper" type="text" name="senha" placeholder="Senha">
+          <input class="text-wrapper" type="text" name="id" placeholder="Id" value=<?php echo $idLogin ?> >
             <img class="codicon-input" src="img/Vector-2.png" />
           </div>
         </div>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper" type="text" name="ConfirmaSenha" placeholder="Confirmar Senha">
+          <input class="text-wrapper" type="text" name="nome" oninput="formatarNome(this)" placeholder="Nome Completo" value= '<?php echo $conexao->getUsuario($idLogin, "nome")?>'>
+            <img class="codicon-input" src="img/Vector.png" />
+          </div>
+        </div>
+        <div class="input">
+          <div class="placeholder">
+          <input class="text-wrapper" type="text" name="login" placeholder="Login" value= '<?php echo $conexao->getUsuario($idLogin, "Login") ?>''>
+            <img class="codicon-input" src="img/Vector.png" />
+          </div>
+        </div>
+        <div class="input">
+          <div class="placeholder">
+          <input class="text-wrapper" type="text" name="senha" placeholder="Senha" value= '<?php echo $conexao->getUsuario($idLogin, "senha") ?>'>
             <img class="codicon-input" src="img/Vector-2.png" />
           </div>
         </div>
@@ -68,45 +75,11 @@ if($login == null){
         </div>
         
         <button name="confirmar" type="submit"  class="button2">Confirmar</button>
-        <button class="button2">Bloquear Usuario</button>
-        <button class="button2">Cancelar</button>
-        <label><a href="Logado.php" class="text3">Voltar ></a></label>
-</section>
-<section class="right-content2">  
-      <div class="input2">
-      <label class="text2">Criar e editar usuarios</label>
-          <div class="placeholder">
-          <input class="text-wrapper"  type="radio" name="EditarUsuario" value="S">
-            <label class="text5">SIM</label>
-          </div>
-          <div class="placeholder">
-          <input class="text-wrapper"  type="radio" name="EditarUsuario" value="N">
-            <label  class="text5">NAO</label>
-          </div>
-        </div>
-        <div class="input2">
-      <label class="text2">Criar e editar clientes</label>
-          <div class="placeholder">
-          <input class="text-wrapper"  type="radio" name="EditarFichas" value="S">
-            <label class="text5">SIM</label>
-          </div>
-          <div class="placeholder">
-          <input class="text-wrapper" type="radio" name="EditarFichas" value="N">
-            <label  class="text5">NAO</label>
-          </div>
-        </div>
-        
+        <label><a href="usuarios.php" class="text3">Voltar ></a></label>
 </section>
       </form>
-     
-    </div>
-
-
-  </div>
-  </div>
-  </div>
-  <?php
-  if (isset($_POST['confirmar'])) {
+     <?php 
+     if (isset($_POST['confirmar'])) {
        
 
 
@@ -118,17 +91,11 @@ if($login == null){
 
       $nome = $_POST["nome"];
       $login = $_POST["login"];
-      
       $senha = $_POST["senha"];
-      $confirmaSenha = $_POST["ConfirmaSenha"];
-      if($senha == $confirmaSenha){
-        include_once "classes/sql.php";
-      $EditarUsuario = $_POST['EditarUsuario'];
-      $EditarFichas = $_POST['EditarFichas'];
+      $per = $conexao->PegarPermissoes($loginG);
 
-      $conexao = new conexaosql();
-
-      $resultado = $conexao->cadastrarUsuario($nome, $login, $senha, $EditarUsuario, $EditarFichas);
+      if ($per == 1 || $per == 3) {
+      $resultado = $conexao->editarUsuario($idLogin, $nome, $login, $senha, );
 
       if($resultado == 1){
       echo   "<script>alert('Dados inseridos com sucesso!'); </script>";
@@ -136,13 +103,21 @@ if($login == null){
       else{
         echo "<script>alert('Login já existe ou erro no banco'); </script>";
       }
+      
+    }
+  }
+      
+    
 
-      }else{
-        echo "<script>alert('SENHA NÃO CONFERE!'); </script>";
-    }}
-      
-      
-      ?>
+
+     ?>
+    </div>
+
+
+  </div>
+  </div>
+  </div>
+  
       <script src="scripts/script.js"></script>
 
 </body>

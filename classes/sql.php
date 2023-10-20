@@ -185,35 +185,68 @@ public function cadastrarClientes($nome, $cpf, $date, $sexo){
     
    }
 
-   public function cadastrarProcedimento($nome, $tipo, $duracao){
-    
-
-    $sql = "Select nome from procedimentos where nome='" . $nome . "'";
+   public function cadastrarProcedimento($nome, $tipo, $duracao, $idItem, $qtdItem) {
+    $sql = "SELECT nome FROM procedimentos WHERE nome='" . $nome . "'";
     $result = mysqli_query($this->conn, $sql);
 
-    if (!$result) { die("Query Failed."); }
+    if (!$result) {
+        die("Query Failed.");
+    }
+
     $row = $result->fetch_array(MYSQLI_ASSOC);
 
-    if ($row == null)
-    {
+    if ($row == null) {
+        if ($idItem == 0 || $qtdItem == 0) {
+            $sqlenvia = "INSERT INTO procedimentos (nome, tipo, duracao) VALUES ('$nome', '$tipo', '$duracao')";
+        } else {
+            $sqlenvia = "INSERT INTO procedimentos (nome, tipo, duracao, Item1, qtdItem1) VALUES ('$nome', '$tipo', '$duracao', '$idItem', '$qtdItem')";
+        }
+
+        if (mysqli_query($this->conn, $sqlenvia)) {
+            return "<script>alert('Dados inseridos com sucesso!'); </script>";
+        } else {
+            return "<script>alert('Erro: " . mysqli_error($this->conn) . "');' </script>";
+        }
+    }
+}
+
+
+    public function cadastrarAgendamento($profissional, $Cliente, $Procedimento, $data){
+    
+
+      $sql = "Select * from procedimentos where nome='" . $Procedimento . "'";
+      $result = mysqli_query($this->conn, $sql);
+  
+      if (!$result) { die("Query Failed."); }
+      $row = $result->fetch_array(MYSQLI_ASSOC);
+  
+        
+        $item = $row['item1'];
+        $quantidade = $row['qtdItem1'];
+      
+
+        $dataFormatada = date('Y-m-d', strtotime($data));
+
+        $sqlenvia = "insert into agendamento(profissional, cliente, procedimento, data ) values('" . $profissional . "','". $Cliente . "','" . $Procedimento . "','" . $dataFormatada . "')";
+        if($item != null){
+          $sqlupdate = "UPDATE Itens SET qntd = qntd - " . $quantidade . " WHERE id = '" . $item . "'";
+          $updateResult = mysqli_query($this->conn, $sqlupdate);
+        }
+        if (mysqli_query($this->conn, $sqlenvia)) {
+          return "<script>alert('Dados inseridos com sucesso!'); </script>";
+      } else {
+          return "<script>alert('Erro: " . mysqli_error($this->conn) . "');' </script>";
+      }
+       
+      
+  
+      mysqli_close($this->conn);
+      }
       
       
-    
-      $sqlenvia = "insert into procedimentos(nome, tipo, duracao) values('" . $nome . "','". $tipo . "','" . $duracao . "')";
-      if (mysqli_query($this->conn, $sqlenvia)) {
-        return "<script>alert('Dados inseridos com sucesso!'); </script>";
-    } else {
-        return "<script>alert('Erro: " . mysqli_error($this->conn) . "');' </script>";
-    }
-
-    mysqli_close($this->conn);
-    }
-    else{
-      return "<script>alert('Item já existente!'); </script>";
-    }
-    
-   }
-
+  
+   
+  
 
   
   
@@ -256,6 +289,7 @@ public function imprimirClientes($id){
         <h4>Adicionar Anotações:</h4>
         <textarea name='texto" . $id . "' rows='4' cols='50'>" . $anotacao . "</textarea>
         <button class='input' name='editar' type='submit' value=" . $id . ">Salvar Anotações</button>
+        <button class='input' name='editarCliente' type='submit' value=" . $id . " >Editar</button>
       </div>
       </div>
       </form>
@@ -282,9 +316,8 @@ public function anotar($id, $anotar){
         mysqli_close($this->conn);
         }
             }
-public function imprimirUsuarios($id){
-
-              $sql = "SELECT nome, Login, Tipo_idTipo, permissoes  FROM usuario WHERE idUsuario='" . $id . "'";
+            public function imprimirUsuarios($id) {
+              $sql = "SELECT nome, Login, Tipo_idTipo, permissoes FROM usuario WHERE idUsuario='" . $id . "'";
               $result = mysqli_query($this->conn, $sql);
             
               if (!$result) {
@@ -292,7 +325,6 @@ public function imprimirUsuarios($id){
               } else {
                 $row = $result->fetch_array(MYSQLI_ASSOC);
             
-                
                 if ($row != null) {
                   $nome = $row["nome"];
                   $login = $row["Login"];
@@ -301,28 +333,29 @@ public function imprimirUsuarios($id){
                   $resultado = "
                   <form method='POST' action=''>
                   <div class='patient-info-container'>
-                <h2>Informações do Usuario</h2>
-                <div class='patient-profile'>
-                  <div class='profile-picture2'>
-                    <img src='img/lampada.jpg' alt='Profile Picture'>
+                    <h2>Informações do Usuario</h2>
+                    <div class='patient-profile'>
+                      <div class='profile-picture2'>
+                        <img src='img/lampada.jpg' alt='Profile Picture'>
+                      </div>
+                      <div class='profile-details'>
+                        <h3>" . $nome . "</h3>
+                        <p>Login: " . $login . "</p>
+                        <p>Tipo: " . $tipo . "</p>
+                        <p> Permissoes: " . $permissoes . "</p>
+                      </div>
+                    </div>
+                    <div class='procedure-record'>
+                      <button class='input' name='bloquear' type='submit' value=" . $id . " >Bloquear</button>
+                      <button class='input' name='editar' type='submit' value=" . $id . " >Editar</button>
+                    </div>
                   </div>
-                  <div class='profile-details'>
-                    <h3>" . $nome . "</h3>
-                    <p>Login: ". $login . "</p>
-                    <p>Tipo: ". $tipo . "</p>
-                    <p> Permissoes: ". $permissoes . "</p>
-                  </div>
-                </div>
-                <div class='procedure-record'>
-                  <button name='bloquear' type='submit' value=" . $id . ">Bloquear</button>
-                </div>
-                
-              </div>
-              </form>
-                ";
-                return $resultado;
+                  </form>
+                  ";
+                  return $resultado;
+                } else {
+                  return "fim"; // Indicar o fim dos registros.
                 }
-                
               }
             }
 public function bloquear($id){
@@ -341,7 +374,9 @@ public function bloquear($id){
         mysqli_close($this->conn);
         }
             }
-public function imprimirItens($id){
+      
+
+            public function imprimirItens($id){
 
               $sql = "SELECT nome, qntd, valor FROM Itens WHERE id='" . $id . "'";
               $result = mysqli_query($this->conn, $sql);
@@ -360,7 +395,7 @@ public function imprimirItens($id){
                   $resultado = "
                   <form method='POST' action=''>
                   <div class='patient-info-container'>
-                <h2>Informações do Iten</h2>
+                <h2>Informações do Item</h2>
                 <div class='patient-profile'>
                   <div class='profile-picture2'>
                     <img src='img/lampada.jpg' alt='Profile Picture'>
@@ -382,9 +417,264 @@ public function imprimirItens($id){
                 
               }
             }
-  }
+            public function imprimirAgendamento($id){
+
+              $sql = "SELECT profissional, cliente, procedimento, data FROM agendamento WHERE id='" . $id . "'";
+              $result = mysqli_query($this->conn, $sql);
+            
+              if (!$result) {
+                die("Query Failed.");
+              } else {
+                $row = $result->fetch_array(MYSQLI_ASSOC);
+            
+                
+                if ($row != null) {
+                  $cliente = $row["cliente"];
+                  $profissional = $row["profissional"];
+                  $Procedimento = $row["procedimento"];
+                  $date = $row["data"];
+                  
+                  $resultado = "
+                  <form method='POST' action=''>
+                  <div class='patient-info-container'>
+                <h2>Informações do Item</h2>
+                <div class='patient-profile'>
+                  <div class='profile-picture2'>
+                    <img src='img/lampada.jpg' alt='Profile Picture'>
+                  </div>
+                  <div class='profile-details'>
+                    <h3>" . $Procedimento . "</h3>
+                    <p>Profissional : ". $profissional . "</p>
+                    <p>Cliente: ". $cliente . "</p>
+                    <p>Data : ". $date . "</p>
+                    
+                  </div>
+                </div>
+                
+                
+              </div>
+              </form>
+                ";
+                return $resultado;
+                }
+                
+              }
+            }
+            public function getUsuario($id, $categoria){
+              $sql = "SELECT nome, Login, Tipo_idTipo, senha, permissoes  FROM usuario WHERE idUsuario='" . $id . "'";
+              $result = mysqli_query($this->conn, $sql);
+              if (!$result) {
+                die("Query Failed.");
+              } else {
+                $row = $result->fetch_array(MYSQLI_ASSOC);
+              if($categoria == "nome"){
+                $retorno = $row["nome"];
+                return $retorno;
+
+              }
+              if($categoria == "Login"){
+                $retorno = $row["Login"];
+                return $retorno;
+
+              }
+              if($categoria == "permissoes"){
+                $retorno = $row["permissoes"];
+                return $retorno;
+
+              }
+              if($categoria == "senha"){
+                $retorno = $row["senha"];
+                return $retorno;
+
+              }
+            }}
+            public function getCliente($id, $categoria){
+              $sql = "SELECT nome, dataNascimento, cpf, anotacao  FROM cliente WHERE id='" . $id . "'";
+              $result = mysqli_query($this->conn, $sql);
+              if (!$result) {
+                die("Query Failed.");
+              } else {
+                $row = $result->fetch_array(MYSQLI_ASSOC);
+                if($categoria == "nome"){
+                  $retorno = $row["nome"];
+                  return $retorno;}
+                if($categoria == "data"){
+                $retorno = $row["dataNascimento"];
+                return $retorno;
+
+              }
+              if($categoria == "cpf"){
+                $retorno = $row["cpf"];
+                return $retorno;
+
+              }
+              if($categoria == "anotacao"){
+                $retorno = $row["anotacao"];
+                return $retorno;
+
+              }
+              
+
+              }
+            }
+          
+            public function editarUsuario($id, $nome, $login, $senha){
+              $sql ="Select login from usuario where idUsuario='" . $id . "'";
+              $result = mysqli_query($this->conn, $sql);
+          
+              
+              if (!$result) { die("Query Failed."); }
+              $row = $result->fetch_array(MYSQLI_ASSOC);
+          
+              if ($row == null)
+              {
+                
+                return 2;
+                }
+              else{
+                $sqlenvia = "update usuario set nome= '" . $nome . "', login =' ". $login . "', senha='" . $senha . "' where idUsuario= " . $id;
+                if (mysqli_query($this->conn, $sqlenvia)) {
+                  return 1;
+              } else {
+                  return 2;
+              }
+            }
+              mysqli_close($this->conn);
+              
+            }
+              
+             
+              public function editarClientes($id, $nome, $cpf, $date, $sexo){
+    
+
+                $sql = "Select cpf from cliente where cpf='" . $cpf . "'";
+                $result = mysqli_query($this->conn, $sql);
+            
+                if (!$result) { die("Query Failed."); }
+                $row = $result->fetch_array(MYSQLI_ASSOC);
+            
+                if ($row == null)
+                { 
+                
+                  $sql = "Select cpf from cliente where cpf='" . $cpf . "'";
+                  if($sexo == 0){
+                    $sexoEnvia = 'M';
+                  }
+                  else if($sexo == 1){
+                    $sexoEnvia = 'F';
+                  }
+                  else{
+                    $sexoEnvia = 'O';
+                  }
+                  $dataFormatada = date('Y-m-d', strtotime($date));
+                
+                  $sqlenvia = "update cliente set nome= '" . $nome . "', cpf= '". $cpf . "', dataNascimento= '" . $dataFormatada . "', sexo='" . $sexoEnvia . "' where id= '" . $id . "'";
+                  if (mysqli_query($this->conn, $sqlenvia)) {
+                    return "<script>alert('Dados inseridos com sucesso!'); </script>";
+                }
+              else{return "<script>alert('Erro!'); </script>";}
+              }
+            
+                mysqli_close($this->conn);}
+                
+                public function nomeItem($id){
+
+                  $sql = "SELECT nome FROM Itens WHERE id='" . $id . "'";
+                  $result = mysqli_query($this->conn, $sql);
+                
+                  if (!$result) {
+                    die("Query Failed.");
+                  } else {
+                    $row = $result->fetch_array(MYSQLI_ASSOC);
+                
+                    
+                    if ($row != null) {
+                      $nome = $row["nome"];
+                      
+                      $resultado = "
+                      <option value='" . $id . "'> " . $nome . " </option>";
+                    return $resultado;
+                    }
+                    
+                  }
+                }
+
+                public function nomeCliente($id){
+
+                  $sql = "SELECT nome FROM cliente WHERE id='" . $id . "'";
+                  $result = mysqli_query($this->conn, $sql);
+                
+                  if (!$result) {
+                    die("Query Failed.");
+                  } else {
+                    $row = $result->fetch_array(MYSQLI_ASSOC);
+                
+                    
+                    if ($row != null) {
+                      $nome = $row["nome"];
+                      
+                      $resultado = "
+                      <option value='" . $nome . "'> " . $nome . " <!</option>
+                    ";
+                    return $resultado;
+                    }
+                    
+                  }
+                }
+                public function nomeLogin($id){
+
+                  $sql = "SELECT nome FROM usuario WHERE idUsuario='" . $id . "'";
+                  $result = mysqli_query($this->conn, $sql);
+                
+                  if (!$result) {
+                    die("Query Failed.");
+                  } else {
+                    $row = $result->fetch_array(MYSQLI_ASSOC);
+                
+                    
+                    if ($row != null) {
+                      $nome = $row["nome"];
+                      
+                      $resultado = "
+                      <option value='" . $nome . "'> " . $nome . " <!</option>
+                    ";
+                    return $resultado;
+                    }
+                    
+                  }
+                }
+                public function nomeProcedimento($id){
+
+                  $sql = "SELECT nome FROM procedimentos WHERE idprocedimentos='" . $id . "'";
+                  $result = mysqli_query($this->conn, $sql);
+                
+                  if (!$result) {
+                    die("Query Failed.");
+                  } else {
+                    $row = $result->fetch_array(MYSQLI_ASSOC);
+                
+                    
+                    if ($row != null) {
+                      $nome = $row["nome"];
+                      
+                      $resultado = "
+                      <option value='" . $nome . "'> " . $nome . " <!</option>
+                    ";
+                    return $resultado;
+                    }
+                    
+                  }
+                }
+                
+               }
+            
+          
+          
+                  
 
   
+
+ 
   
   
     

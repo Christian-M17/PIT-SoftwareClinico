@@ -36,7 +36,7 @@
         </div>
         <div class="input">
           <div class="placeholder">
-          <input class="text-wrapper" type="text" name="senha" placeholder="Senha">
+          <input class="text-wrapper" type="password" name="senha" placeholder="Senha">
             <img class="codicon-input" src="img/Vector-2.png" />
           </div>
         </div>
@@ -45,7 +45,7 @@
           <select class="text-wrapper" name="clinica">
             <option value="0">Clinica Lampada</option>
           </select>
-            <img class="codicon-input" src="img/Vector-1.png" />
+            <img class="codicon-input" src="img/Vector-3.png" />
           </div>
         </div>
         

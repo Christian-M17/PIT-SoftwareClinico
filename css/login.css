@@ -223,6 +223,8 @@
   font-size: 14px;
   letter-spacing: 0;
   line-height: normal;
+    border: none;
+  outline: none;
   border: none;
   outline: none;
 }

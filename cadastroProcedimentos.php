@@ -2,10 +2,9 @@
 $login = $_SESSION["loginG"];
 if ($login == null) {
   header("Location: login.php");
-} 
-include_once "classes/sql.php";
-$conexao = new conexaosql();
-?>
+  include_once "classes/sql.php";
+                        $conexao = new conexaosql();  
+} ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,48 +52,38 @@ $conexao = new conexaosql();
             <input class="text-wrapper" type="number" name="duracao" placeholder="duracao">
             <img class="codicon-input" src="img/Vector-6.png" />
           </div>
-          
         </div>
+        <button type="submit" name="confirmar" class="button2">Cadastrar</button>
+        <button name="enviar" type="submit" class="button2">Cancelar</button>
+        <label> <a href="Logado.php" class="text3">Voltar ></a></label>
+      
+      <section class="right-content2">
+        <div class="input3">
+          <label class="text2">Adicionar Item</label>
+          <div class="input4">
+            <div class="placeholder">
+              <select class="text-wrapper" name="clinica">
+              <?php 
+                        
 
-        <label class="text2"> Uso de itens</label>
-        <div class="input">
-          <div class="placeholder">
-            <select class="text-wrapper" name="itens">
-            <?php 
-            $counter = 1;
-            while ($counter <= 10) {
+                        while ($counter <= 10) {
                             echo $conexao->nomeItem($counter);
                             $counter++;}
                         ?>
-            </select>
-            <img class="codicon-input" src="img/Vector-4.png" />
+              </select>
+              <img class="codicon-input" src="img/Vector-4.png" />
+            </div>
           </div>
-        </div>
-        <div class="input">
-          <div class="placeholder">
-            <input class="text-wrapper" type="number" name="quantidade" placeholder="quantidade">
-            <img class="codicon-input" src="img/Vector-5.png" />
+          <div class="input4">
+            <div class="placeholder">
+              <input class="text-wrapper" type="number" name="quantidade" placeholder="quantidade">
+              <img class="codicon-input" src="img/Vector-5.png" />
+            </div>
           </div>
+          
+          <button type="submit" name="confirmar" class="button2">Adicionar Item</button>
         </div>
-
-        <button type="submit" name="confirmar" class="button2">Cadastrar</button>
-        <button name="enviar" type="submit" class="button2">Cancelar</button>
-        
-      
-  
-        
-          
-
-          
-    
-        
-    
-      <label> <a href="Logado.php" class="text3">Voltar ></a></label>
-      </div>
-  </div>
-  </div>
-  </div>
-</form>
+      </section>
       <?php
 
 if (isset($_POST['confirmar'])) {
@@ -103,7 +92,7 @@ if (isset($_POST['confirmar'])) {
     $itemId = $_POST["itens"];
     $quantidade = $_POST["quantidade"];
     $duracao = $_POST["duracao"];
-    if($quantidade == null || $quantidade == 0){
+    if($quantidade == null || $quantidade = 0){
       $itemId = 0;
       $quantidade = 0;
     }
@@ -114,7 +103,11 @@ if (isset($_POST['confirmar'])) {
 
 
       ?>
-    
+    </div>
+  </div>
+  </div>
+  </div>
+</form>
   <script src="script.js"></script>
 </body>
 

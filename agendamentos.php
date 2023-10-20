@@ -26,7 +26,7 @@
 $conexao = new conexaosql();  
 
 while ($counter <= 10) {
-  echo $conexao->imprimirItens($counter);
+  echo $conexao->imprimirAgendamento($counter);
   $counter++;
 }
 
