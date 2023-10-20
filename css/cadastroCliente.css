@@ -211,7 +211,7 @@ a{
   display: flex;
     align-items: center;
 }
-
+/*
         .text-wrapper {
             width: 100%;
             border: none;
@@ -219,12 +219,13 @@ a{
             outline: none;
             font-size: 16px;
         }
-
+*/
 .input .text-wrapper {
   position: absolute;
   top: 2px;
   left: 5em;
-
+  border: none;
+  outline: none;
   font-family: "Poppins-Regular", Helvetica;
   font-weight: 400;
   color: #333333;
