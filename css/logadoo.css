@@ -210,6 +210,8 @@
   position: absolute;
   top: 2px;
   left: 32px;
+    border: none;
+  outline: none;
   opacity: 0.3;
   font-family: "Poppins-Regular", Helvetica;
   font-weight: 400;
