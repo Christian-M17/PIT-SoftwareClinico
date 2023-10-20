@@ -218,10 +218,12 @@ a{
   color: #333333;
   font-size: 14px;
   letter-spacing: 0;
+    border: none;
+  outline: none;
   line-height: normal;
   border: none;
 }
-
+/*
 .text-wrapper {
     width: 100%;
     border: none;
@@ -237,7 +239,7 @@ a{
             outline: none;
             font-size: 16px;
         }
-
+*/
 
 .codicon-input{
   height: 2vh;
