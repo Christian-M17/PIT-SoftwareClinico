@@ -216,12 +216,14 @@ a{
   font-family: "Poppins-Regular", Helvetica;
   font-weight: 400;
   color: #333333;
+    border: none;
+  outline: none;
   font-size: 14px;
   letter-spacing: 0;
   line-height: normal;
   border: none;
 }
-
+/*
 .text-wrapper {
     width: 100%;
     border: none;
@@ -238,7 +240,7 @@ a{
             font-size: 16px;
         }
 
-
+*/
 .codicon-input{
   height: 2vh;
 }
